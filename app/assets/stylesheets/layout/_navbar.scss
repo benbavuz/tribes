@@ -20,8 +20,11 @@
 }
 
 /* Navbar logo */
-.navbar-wagon-brand img {
-  width: 50px;
+.navbar-wagon-brand img.logo {
+  height: 50px;
+}
+.navbar-wagon-brand img.logo-text {
+  height: 50px;
 }
 
 /* Navbar right section (with form, links, button) */
