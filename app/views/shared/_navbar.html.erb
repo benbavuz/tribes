@@ -1,77 +1,69 @@
-<div class="navbar-wagon">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", class: "logo" %>
-    <%= image_tag "logo-text.png", class: "logo-text" %>
-  <% end %>
 
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
+<% if user_signed_in? %>
 
-    <!-- Different navigation if login or not -->
-    <% if user_signed_in? %>
-
-      <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue">3</div>
-        </div>
-      <% end %>
-
-      <!-- Profile picture and dropdown -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-    <% else %>
-
-      <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li>
+    <%= link_to "#" do %>
+      <i class="fa fa-user"> </i> <%= t(".profile", default: "Profile") %>
     <% end %>
+  </li>
 
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
-  </div>
+  <li>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+    <% end %>
+  </li>
+</ul>
 
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+<div class = "navbar-fixed">
+  <nav>
+    <div class="nav-wrapper default-primary-color">
+      <a href="/" class="brand-logo">Tribes</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">My tribes</a></li>
+        <li><a href="#">Create a tribe</a></li>
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">My account<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
     </div>
-  </div>
+  </nav>
 </div>
+
+
+<% else %>
+<div class="navbar-fixed">
+  <nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo">Tribes</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#">Create a tribe</a></li>
+          <li><%= link_to t(".sign_in", default: "Login"), new_user_session_path %></li>
+        </ul>
+      </div>
+    </nav>
+</div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
