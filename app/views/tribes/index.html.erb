@@ -4,5 +4,9 @@
 <% @tribes.each do |tribe| %>
 <%= tribe.name %>
 <%= link_to "show", tribe %>
+
+<% if tribe.photo? %>
+  <%= cl_image_tag tribe.photo.path, crop: :fill %>
+<% end %>
 <% end %>
 
