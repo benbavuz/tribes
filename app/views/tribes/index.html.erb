@@ -4,6 +4,6 @@
 <% @tribes.each do |t| %>
 <%= t.name %>
 <%= t.about %>
-<%= link_to icon('trash'), tribe_path(t.id), method: :delete, data: { confirm: 'Are you sure?' }, %>
+<%= link_to icon('trash'), tribe_path(t.id), method: :delete %>
 <% end %>
 

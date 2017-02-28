@@ -1,4 +1,5 @@
 class TribesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :set_tribe, only: [:show, :edit, :update, :destroy]
 
   def index
