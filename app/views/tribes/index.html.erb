@@ -1,9 +1,8 @@
 <h1>Tribes#index</h1>
 <p>Find me in app/views/tribes/index.html.erb</p>
 
-<% @tribes.each do |t| %>
-<%= t.name %>
-<%= t.about %>
-<%= link_to icon('trash'), tribe_path(t.id), method: :delete %>
+<% @tribes.each do |tribe| %>
+<%= tribe.name %>
+<%= link_to "show", tribe %>
 <% end %>
 
