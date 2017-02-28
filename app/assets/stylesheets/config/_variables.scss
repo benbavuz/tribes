@@ -23,16 +23,39 @@ $base-height: 1.4;
 /* -------------------------------------
  * Colors
  * ------------------------------------- */
+
+
+
+
+
 // Scheme
 $brand-color: #D23333;
 
 
 // Color palette (as shared in trello)
-$color1: rgba(218, 214, 214, 1);
-$color2: rgba(146, 191, 177, 1);
-$color3: rgba(244, 172, 69, 1);
-$color4: rgba(105, 74, 56, 1);
-$color5: rgba(166, 28, 60, 1);
+
+// cyan darken-2
+$dark-primary-color : #0097A7;
+
+// cyan
+$default-primary-color : #00BCD4;
+
+// cyan lighten-4
+$light-primary-color : #B2EBF2;
+
+$text-primary-color :#FFFFFF;
+
+// amber
+$accent-color :#FFC107;
+
+// grey darken-4
+$primary-text-color :#212121;
+
+// grey darken-1
+$secondary-text-color :#757575;
+
+// grey lighten-1
+$divider-color :#BDBDBD;
 
 
 // $red: #EE5F5B;
