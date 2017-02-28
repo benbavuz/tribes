@@ -1,6 +1,6 @@
 class Hut < ApplicationRecord
   belongs_to :user
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :address, presence: true
   validates :zip_code, presence: true
   validates :city, presence: true
