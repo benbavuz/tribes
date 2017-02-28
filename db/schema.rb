@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228113746) do
+ActiveRecord::Schema.define(version: 20170228142642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 20170228113746) do
     t.index ["user_id"], name: "index_huts_on_user_id", using: :btree
   end
 
+  create_table "tribe_members", force: :cascade do |t|
+    t.integer  "tribe_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tribe_id"], name: "index_tribe_members_on_tribe_id", using: :btree
+    t.index ["user_id"], name: "index_tribe_members_on_user_id", using: :btree
+  end
+
   create_table "tribes", force: :cascade do |t|
     t.string   "name"
     t.text     "about"
@@ -76,4 +85,6 @@ ActiveRecord::Schema.define(version: 20170228113746) do
   add_foreign_key "hut_equipments", "equipment"
   add_foreign_key "hut_equipments", "huts"
   add_foreign_key "huts", "users"
+  add_foreign_key "tribe_members", "tribes"
+  add_foreign_key "tribe_members", "users"
 end
