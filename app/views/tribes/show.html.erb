@@ -1,2 +1,7 @@
 <h1>Tribes#show</h1>
 <p>Find me in app/views/tribes/show.html.erb</p>
+
+<%= @tribe.name %>
+<%= @tribe.about %>
+<%= link_to icon('trash'), tribe_path(@tribe.id), method: :delete %>
+
