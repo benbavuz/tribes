@@ -20,6 +20,9 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+# gem for managing authorizations
+gem "pundit"
+
 # gem to upload images
 gem 'cloudinary'
 
