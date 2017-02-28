@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :tribe_members
   has_many :tribes, through: :tribe_members
+  has_many :huts
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
