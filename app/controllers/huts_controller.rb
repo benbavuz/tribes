@@ -1,7 +1,7 @@
 class HutsController < ApplicationController
 
   def index
-    @huts = Hut.all
+    @huts = policy_scope(Hut)
   end
 
   def show
@@ -10,10 +10,12 @@ class HutsController < ApplicationController
 
   def new
     @hut = Hut.new
+    authorize @hut
   end
 
   def create
     @hut = Hut.new(hut_params)
+    authorize @hut
     @hut.user = current_user
     @hut.save!
   end
