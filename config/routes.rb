@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :huts, only: [:show]
+
   resources :tribes
 
   devise_for :users
