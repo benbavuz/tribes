@@ -22,9 +22,23 @@ gem 'autoprefixer-rails'
 
 # gem for managing authorizations
 gem "pundit"
+# cloudinary Attachinary
+gem 'cloudinary', '1.1.7'
+gem 'attachinary', git: 'https://github.com/assembler/attachinary.git'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
 
-# gem to upload images
-gem 'cloudinary'
+# install geocoder
+gem "geocoder"
+gem "coffee-rails"
+gem "gmaps4rails"
+
+gem 'country_select'
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
+
 
 group :development, :test do
   gem 'binding_of_caller'

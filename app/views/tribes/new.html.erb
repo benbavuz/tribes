@@ -1,10 +1,28 @@
-<h1>Tribes#new</h1>
-<p>Find me in app/views/tribes/new.html.erb</p>
+<div class="container">
+  <h1 class="center-align">Create a tribe</h1>
+  <div class="row">
+      <%= simple_form_for @tribe do |f| %>
+        <%= f.input :name, input_html: { class: 'validate' } %>
+        <%= f.input :about, as: :text, input_html: { class: 'materialize-textarea' } %>
+        <div class="file-field input-field">
+          <div class="btn btn-input-file-cyan">
+            <span>Photo</span>
+            <%= f.input :photo, as: :attachinary, label: false %>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Upload one file only please">
+          </div>
+        </div>
+        <div class="center-align">
+          <%= f.submit "Add my tribe", class: 'btn-large waves-effect waves-light amber' %>
+        </div>
+        <div class="left-align padding-top">
+          <%= link_to tribes_path, class: 'btn-floating btn-large light-primary-btn waves-effect waves-light' do %>
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+          <% end %></br>
+          <em>Home page</em>
+        </div>
+      <% end %>
+  </div>
+</div>
 
-<%= simple_form_for @tribe do |f| %>
-  <%= f.input :name %>
-  <%= f.input :about %>
-  <%= f.submit "Add" %>
-<% end %>
-
-<%= link_to icon('chevron-circle-left')+' Back', tribes_path %>

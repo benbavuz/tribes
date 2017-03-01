@@ -12,6 +12,7 @@ class TribesController < ApplicationController
 
   def new
     @tribe = Tribe.new
+    authorize @tribe
   end
 
   def create
@@ -36,7 +37,7 @@ class TribesController < ApplicationController
   private
 
   def tribe_params
-    params.require(:tribe).permit(:name, :about)
+    params.require(:tribe).permit(:name, :about, :photo)
   end
 
   def set_tribe
@@ -52,26 +53,9 @@ end
 #  # action linked to all users
 #   def index
 
-#     if params[:location].present?
-#       @tribes = tribe.near(params[:location])
-#     else
-#       @tribes = tribe.where.not(latitude: nil, longitude: nil)
-#     end
-
-#     @hash = Gmaps4rails.build_markers(@tribes) do |tribe, marker|
-#       marker.lat tribe.latitude
-#       marker.lng tribe.longitude
-#       marker.infowindow render_to_string(partial: "tribes/infowindow", locals: { tribe: tribe })
-#     end
 #   end
 
 #   def show
-#     @tribes = []
-#     @tribes[0] = @tribe
-#     @hash = Gmaps4rails.build_markers(@tribes) do |tribe, marker|
-#       marker.lat tribe.latitude
-#       marker.lng tribe.longitude
-#     end
 #   end
 
 #   #actions linked to specific user
