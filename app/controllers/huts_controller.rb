@@ -11,9 +11,28 @@ class HutsController < ApplicationController
     end
   end
 
+  def new
+    @hut = Hut.new
+  end
+
+  def create
+    @hut = Hut.new(hut_params)
+    @hut.user = current_user
+    if @hut.save
+      redirect_to root_path, notice: 'Your hut has been created'
+    else
+      render :new
+    end
+  end
+
   private
+
+  def flat_params
+    params.require(:flat).permit(:address, :zip_code, :city, :country)
+  end
 
   def set_hut
     @hut = Hut.find(params[:id])
   end
+
 end
