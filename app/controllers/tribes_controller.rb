@@ -3,10 +3,11 @@ class TribesController < ApplicationController
   before_action :set_tribe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tribes = Tribe.all
+    @tribes = policy_scope(Tribe)
   end
 
   def show
+    authorize @tribe
   end
 
   def new

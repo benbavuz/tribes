@@ -12,6 +12,7 @@ class HutsController < ApplicationController
 
   def show
     @hut = Hut.find(params[:id])
+    authorize @hut
   end
 
   def new
