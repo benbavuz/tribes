@@ -2,8 +2,8 @@
   <h1 class="center-align">Create a tribe</h1>
   <div class="row">
       <%= simple_form_for @tribe do |f| %>
-        <%= f.input :name, input_html: { class: 'validate' } %>
-        <%= f.input :about, as: :text, input_html: { class: 'materialize-textarea' } %>
+        <%= f.input :name, input_html: { class: 'validate', minlength: 10, maxlength: 20 } %>
+        <%= f.input :about, as: :text, input_html: { class: 'materialize-textarea', minlength: 20, maxlength: 30 } %>
         <div class="file-field input-field">
           <div class="btn btn-input-file-cyan">
             <span>Photo</span>
