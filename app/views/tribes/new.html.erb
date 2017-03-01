@@ -6,7 +6,7 @@
         <%= f.input :about, as: :text, input_html: { class: 'materialize-textarea' } %>
         <div class="file-field input-field">
           <div class="btn btn-input-file-cyan">
-            <span>File</span>
+            <span>Photo</span>
             <%= f.input :photo, as: :attachinary, label: false %>
           </div>
           <div class="file-path-wrapper">
@@ -14,10 +14,10 @@
           </div>
         </div>
         <div class="center-align">
-          <%= f.submit "Add my tribe", class: 'btn-large waves-effect waves-light red-accent-btn' %>
+          <%= f.submit "Add my tribe", class: 'btn-large waves-effect waves-light amber' %>
         </div>
-        <div class="left-align">
-          <%= link_to tribes_path, class: 'btn-floating btn-large amber waves-effect waves-light' do %>
+        <div class="left-align padding-top">
+          <%= link_to tribes_path, class: 'btn-floating btn-large light-primary-btn waves-effect waves-light' do %>
             <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
           <% end %></br>
           <em>Home page</em>
