@@ -9,4 +9,8 @@ class Hut < ApplicationRecord
 
   has_many :hut_equipments
   has_many :equipments, through: :hut_equipments
+
+  # implement methode to use geocode
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 end
