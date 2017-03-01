@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'huts/show'
+  resources :huts, only: [:show]
 
   resources :tribes
 
