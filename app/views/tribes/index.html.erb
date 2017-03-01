@@ -4,7 +4,7 @@
     <% @tribes.each do |tribe| %>
       <div class="col s12 m4">
         <%= link_to tribe_path(tribe) do %>
-          <div class="card border">
+          <div class="card border-dotted-cyan">
             <div class="card-image">
               <% if tribe.photo? %>
                 <%= cl_image_tag tribe.photo.path, crop: :fill %>
