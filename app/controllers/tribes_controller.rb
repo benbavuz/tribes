@@ -18,6 +18,7 @@ class TribesController < ApplicationController
   def create
     @tribe = Tribe.new(tribe_params)
     @tribe.save!
+    authorize @tribe
     redirect_to tribes_path
   end
 

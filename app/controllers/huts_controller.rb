@@ -27,9 +27,10 @@ class HutsController < ApplicationController
 
   def create
     @hut = Hut.new(hut_params)
-    authorize @hut
     @hut.user = current_user
     @hut.save!
+    authorize @hut
+
   end
 
   def edit
