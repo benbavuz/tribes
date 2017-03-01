@@ -4,6 +4,12 @@ class HutsController < ApplicationController
     @huts = policy_scope(Hut)
   end
 
+  def index_by_user
+    @user = User.find(params[:user_id])
+    @huts = @user.huts
+    authorize @huts
+  end
+
   def show
     @hut = Hut.find(params[:id])
   end
