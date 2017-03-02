@@ -14,6 +14,8 @@ class Hut < ApplicationRecord
   geocoded_by :full_address
   after_validation :geocode, if: :address_changed?
 
+  has_attachment :photo
+
   def full_address
     "#{address}, #{zip_code} #{city} #{ISO3166::Country[country].name}"
   end
