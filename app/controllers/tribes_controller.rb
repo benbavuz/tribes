@@ -3,37 +3,22 @@ class TribesController < ApplicationController
   before_action :set_tribe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tribes = Tribe.all
-
-#     if params[:location].present?
-#       @tribes = tribe.near(params[:location])
-#     else
-#       @tribes = tribe.where.not(latitude: nil, longitude: nil)
-#     end
-
-#     @hash = Gmaps4rails.build_markers(@tribes) do |tribe, marker|
-#       marker.lat tribe.latitude
-#       marker.lng tribe.longitude
-#       marker.infowindow render_to_string(partial: "tribes/infowindow", locals: { tribe: tribe })
-#     end
+    @tribes = policy_scope(Tribe)
   end
 
   def show
-#     @tribes = []
-#     @tribes[0] = @tribe
-#     @hash = Gmaps4rails.build_markers(@tribes) do |tribe, marker|
-#       marker.lat tribe.latitude
-#       marker.lng tribe.longitude
-#     end
+    authorize @tribe
   end
 
   def new
     @tribe = Tribe.new
+    authorize @tribe
   end
 
   def create
     @tribe = Tribe.new(tribe_params)
     @tribe.save!
+    authorize @tribe
     redirect_to tribes_path
   end
 

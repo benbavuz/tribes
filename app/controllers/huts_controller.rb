@@ -1,10 +1,19 @@
 class HutsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_hut, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @huts = policy_scope(Hut)
+  end
+
+  def index_by_user
+    @user = User.find(params[:user_id])
+    @huts = @user.huts
+    authorize @huts
+  end
 
   def show
+    @hut = Hut.find(params[:id])
+    authorize @hut
     @huts = []
-    @huts[0] = @hut
     @hash = Gmaps4rails.build_markers(@huts) do |hut, marker|
     marker.lat hut.latitude
     marker.lng hut.longitude
@@ -13,26 +22,33 @@ class HutsController < ApplicationController
 
   def new
     @hut = Hut.new
+    authorize @hut
   end
 
   def create
     @hut = Hut.new(hut_params)
     @hut.user = current_user
-    if @hut.save
-      redirect_to root_path, notice: 'Your hut has been created'
-    else
-      render :new
-    end
+    @hut.save!
+    authorize @hut
+
   end
 
-  private
-
-  def flat_params
-    params.require(:flat).permit(:address, :zip_code, :city, :country)
-  end
-
-  def set_hut
+  def edit
     @hut = Hut.find(params[:id])
+  end
+
+  def update
+    @hut.update(hut_params)
+  end
+
+  def destroy
+    @hut.destroy
+  end
+
+private
+
+  def hut_params
+  params.require(:hut).permit(:name, :address1, :address2, :zip_code, :country, :capacity)
   end
 
 end
