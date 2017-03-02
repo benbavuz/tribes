@@ -31,6 +31,11 @@ class HutsController < ApplicationController
     @hut.save!
     authorize @hut
 
+    if @hut.save
+      redirect_to user_huts_path(user_id: @hut.user.id)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -48,7 +53,7 @@ class HutsController < ApplicationController
 private
 
   def hut_params
-  params.require(:hut).permit(:name, :address1, :address2, :zip_code, :country, :capacity)
+  params.require(:hut).permit(:name, :address, :address2, :zip_code, :city, :country, :capacity, :about)
   end
 
 end
