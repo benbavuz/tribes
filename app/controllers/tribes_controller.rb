@@ -6,6 +6,12 @@ class TribesController < ApplicationController
     @tribes = policy_scope(Tribe)
   end
 
+  def index_by_user
+    @user = User.find(params[:user_id])
+    @tribes = @user.tribes
+    authorize @tribes
+  end
+
   def show
     authorize @tribe
 
