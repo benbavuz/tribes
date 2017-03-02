@@ -1,0 +1,17 @@
+<div class="col s12 m4">
+  <%= link_to tribe_path(tribe) do %>
+    <div class="card border-dotted-cyan">
+      <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
+      <% if tribe.photo? %>
+        <%= cl_image_tag(tribe.photo.path, height: 150, width: 200, crop: :fill) %>
+      <% else %>
+        <%= cl_image_tag('https://s2.qwant.com/thumbr/0x0/5/1/327f1a9730f8f9a3db456dc43e0588/b_1_q_0_p_0.jpg?u=http%3A%2F%2Fst.depositphotos.com%2F1029662%2F1324%2Fv%2F950%2Fdepositphotos_13242438-Africa-Red-Indian-Eskimo-Man-Woman-National-Traditional-Costume-Dress-Clothing-Icon-Symbol-Sign-Pictogram.jpg&q=0&b=1&p=0&a=1', height: 150, width: 200, crop: :fill) %>
+      <% end %>
+        <span class="card-title"><%= tribe.name %></span>
+      </div>
+      <div class="card-content primary-txt">
+        <p><%= tribe.short_desk %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
