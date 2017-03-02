@@ -30,7 +30,6 @@ gem 'coffee-rails'
 
 # install geocoder
 gem "geocoder"
-gem "coffee-rails"
 gem "gmaps4rails"
 
 gem 'country_select'
