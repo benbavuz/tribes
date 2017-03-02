@@ -1,27 +1,49 @@
 
-<div class="container">
+<!-- top section -->
 
+<div class="container">
   <div class="right-content center">
-          <div class = "img-tribe">
-          <% if @tribe.photo? %>
-                    <%= cl_image_tag("#{@tribe.photo.path}", height: 50, width: 50, :class => "circle") %>
-            <% else %>
-                    <%= cl_image_tag('https://s2.qwant.com/thumbr/0x0/5/1/327f1a9730f8f9a3db456dc43e0588/b_1_q_0_p_0.jpg?u=http%3A%2F%2Fst.depositphotos.com%2F1029662%2F1324%2Fv%2F950%2Fdepositphotos_13242438-Africa-Red-Indian-Eskimo-Man-Woman-National-Traditional-Costume-Dress-Clothing-Icon-Symbol-Sign-Pictogram.jpg&q=0&b=1&p=0&a=1', height: 50, width: 50, :class => "circle") %>
-            <% end %>
-          </div>
-          <div class="tribe-name "><h4 class = "center"><%= @tribe.name %></h4></div>
-          <div class="tribe-cabout center"><%= @tribe.short_desk %></div>
-        </div>
+    <div class = "img-tribe">
+      <% if @tribe.photo? %>
+        <%= cl_image_tag("#{@tribe.photo.path}", height: 50, width: 50, :class => "circle") %>
+      <% else %>
+        <%= cl_image_tag('https://s2.qwant.com/thumbr/0x0/5/1/327f1a9730f8f9a3db456dc43e0588/b_1_q_0_p_0.jpg?u=http%3A%2F%2Fst.depositphotos.com%2F1029662%2F1324%2Fv%2F950%2Fdepositphotos_13242438-Africa-Red-Indian-Eskimo-Man-Woman-National-Traditional-Costume-Dress-Clothing-Icon-Symbol-Sign-Pictogram.jpg&q=0&b=1&p=0&a=1', height: 50, width: 50, :class => "circle") %>
+      <% end %>
+    </div>
+      <div class="tribe-name "><h4 class = "center"><%= @tribe.name %></h4></div>
+      <div class="tribe-cabout center"><%= @tribe.short_desk %></div>
+  </div>
 </div>
 
+<!-- Information section -->
+<div class="container">
+  <ul class="collapsible" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header active"><i class="material-icons">done</i>Minimum requirements</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">info_outline</i>About</div>
+        <div class="collapsible-body"><span><%= @tribe.about %></span></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">import_export</i>Skills</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+    </ul>
+</div>
 
-  <div class = "top-section-tribe">
-        <div id="map" style="width: 100%; height: 400px;"></div>
+<!-- CTA -->
+<div class="row center map-tribe">
+  <a href="#" id="download-button" class="btn-large waves-effect waves-light amber"> Request to Join </a>
+</div>
 
-      </div>
+<!-- Map -->
+<div class = "map-tribe">
+  <div id="map" style="width: 100%; height: 400px;"></div>
+</div>
 
-
-
+<!-- Map rendering -->
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
@@ -42,22 +64,8 @@
 
 
 
-<div class="container">
-  <ul class="collapsible" data-collapsible="accordion">
-      <li>
-        <div class="collapsible-header active"><i class="material-icons">done</i>Minimum requirements</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
-      <li>
-        <div class="collapsible-header"><i class="material-icons">info_outline</i>About</div>
-        <div class="collapsible-body"><span><%= @tribe.about %></span></div>
-      </li>
-      <li>
-        <div class="collapsible-header"><i class="material-icons">import_export</i>Skills</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-      </li>
-    </ul>
-</div>
+
+
 
 <!--
 <div class="container">
@@ -79,7 +87,7 @@
   </ul>
 </div> -->
 
-<div class="row center">
-        <a href="#" id="download-button" class="btn-large waves-effect waves-light amber"> Request to Join </a>
-      </div>
+
+<!-- CTA join tribe -->
+
 
