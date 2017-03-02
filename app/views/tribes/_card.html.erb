@@ -15,8 +15,36 @@
             </div>
             <div class="card-action">
               <a href="#" class="cyan-text text-darken-2">SKILLS</a>
-              <a href="#" class="cyan-text text-darken-2">MAP</a>
-              <a href="#" class="cyan-text text-darken-2">SHOW</a>
+              <a href="#modal1" class="cyan-text text-darken-2">MAP</a>
+              <%= link_to "SHOW", tribe_path(tribe), class: "cyan-text text-darken-2" %>
+              <!-- <a href="#" class="cyan-text text-darken-2">SHOW</a> -->
             </div>
           </div>
         </div>
+
+
+  <% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+  <% end %>
+  <% end %>
+
+
+  <div class = "container center">
+  <!-- Modal Trigger -->
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
+    </div>
+</div>
+
