@@ -8,6 +8,16 @@ class TribesController < ApplicationController
 
   def show
     authorize @tribe
+
+    # user_ids = TribeMember.where(tribe_id: @tribe.id).pluck(:user_id)
+    # @huts = Hut.where(user_id: user_ids)
+
+    # @hash = Gmaps4rails.build_markers(@huts) do |hut, marker|
+    #   marker.lat hut.latitude
+    #   marker.lng hut.longitude
+      # marker.infowindow render_to_string(partial: "lawyers/infowindow", locals: { lawyer: lawyer })
+    end
+
   end
 
   def new
