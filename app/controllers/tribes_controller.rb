@@ -38,7 +38,7 @@ class TribesController < ApplicationController
   private
 
   def tribe_params
-    params.require(:tribe).permit(:name, :about, :photo)
+    params.require(:tribe).permit(:name, :about, :short_desk, :photo)
   end
 
   def set_tribe

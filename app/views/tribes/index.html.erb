@@ -2,7 +2,9 @@
   <h1 class="center-align">List of Tribes</h1>
   <div class="row">
     <% @tribes.each do |tribe| %>
+
       <%= render partial: "card", object: tribe, as: :tribe %>
+
     <% end %>
   </div>
 </div>
