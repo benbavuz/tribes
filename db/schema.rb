@@ -77,7 +77,9 @@ ActiveRecord::Schema.define(version: 20170302113038) do
     t.text     "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
     t.string   "short_desk"
+    t.index ["user_id"], name: "index_tribes_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -105,4 +107,5 @@ ActiveRecord::Schema.define(version: 20170302113038) do
   add_foreign_key "huts", "users"
   add_foreign_key "tribe_members", "tribes"
   add_foreign_key "tribe_members", "users"
+  add_foreign_key "tribes", "users"
 end
