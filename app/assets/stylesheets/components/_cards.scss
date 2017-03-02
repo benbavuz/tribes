@@ -1,6 +1,14 @@
 .primary-txt {
   color: $primary-text-color;
 }
-.border-dotted-cyan {
-  border: 1px dotted $default-primary-color;
+// .border-dotted-cyan {
+//   border: 1px dotted $default-primary-color;
+// }
+
+// .card-degrad {
+//   background-color: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(),
+// }
+
+.card-title {
+   text-shadow: 1px 1px 1px black;
 }
