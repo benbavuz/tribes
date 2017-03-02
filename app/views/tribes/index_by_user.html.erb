@@ -1,11 +1,8 @@
 <div class="container">
-  <h3 class="center-align">List of Tribes</h3>
+  <h3 class="center-align">My tribes</h3>
   <div class="row">
     <% @tribes.each do |tribe| %>
-
       <%= render partial: "card", object: tribe, as: :tribe %>
-
     <% end %>
   </div>
 </div>
-
