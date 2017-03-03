@@ -14,6 +14,6 @@ tribe2 = Tribe.create(name: 'English Tribe', about: 'English Tribe by english pe
 tribe3 = Tribe.create(name: 'Spanish Tribe', about: 'Spanish Tribe by spanish people')
 tribe4 = Tribe.create(name: 'Egyptian Tribe', about: 'Egyptian Tribe by egyptian people')
 
-equipments = ["Wifi", "Printer", "Scanner", "Kitchen", "Coffe machine", "Sofa", "garden"]
+equipments = ["Wifi", "Printer", "Scanner", "Kitchen", "Coffe machine", "Sofa", "Garden"]
 
 equipments.each { |x| Equipment.create(name: x) }

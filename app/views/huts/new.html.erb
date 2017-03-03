@@ -5,6 +5,7 @@
           <%= f.input :name%>
           <%= f.input :about %>
           <%= f.input :capacity %>
+          <%= f.association :equipments, collection: equipments_collection, multiple: true %>
           <%= f.input :address %>
           <%= f.input :address2 %>
           <%= f.input :zip_code%>
