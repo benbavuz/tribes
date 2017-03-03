@@ -17,7 +17,7 @@ class Hut < ApplicationRecord
   has_attachment :photo
 
   def full_address
-    "#{address}, #{zip_code} #{city} #{ISO3166::Country[country].name}"
+    "#{address}, #{zip_code} #{city} #{country}"
   end
 
   def full_address_changed?
