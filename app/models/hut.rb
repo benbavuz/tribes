@@ -14,7 +14,7 @@ class Hut < ApplicationRecord
   geocoded_by :full_address
   after_validation :geocode, if: :address_changed?
 
-  has_attachment :photo
+  # has_attachment :photo
 
   def full_address
     "#{address}, #{zip_code} #{city} #{country}"
@@ -24,6 +24,5 @@ class Hut < ApplicationRecord
     address_changed? || zip_code_changed? || city_changed? || country_changed?
   end
 
-  has_attachment :photo
   has_attachments :photos, :maximum => 4
 end
