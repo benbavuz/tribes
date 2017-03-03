@@ -53,7 +53,7 @@ class HutsController < ApplicationController
 private
 
   def hut_params
-  params.require(:hut).permit(:name, :address, :address2, :zip_code, :city, :country, :capacity, :about, :photo)
+    params.require(:hut).permit(:name, :address, :address2, :zip_code, :city, :country, :capacity, :about, :photo, :photos)
   end
 
 end
