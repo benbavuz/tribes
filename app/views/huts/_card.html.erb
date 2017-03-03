@@ -2,7 +2,11 @@
   <%= link_to hut_path(hut) do %>
     <div class="card border-dotted-cyan">
       <div class="card-image" >
+      <% if hut.photo? %>
+        <%= cl_image_tag("#{hut.photo.path}",  height: 150, width: 200, class: 'card-degrad') %>
+      <% else %>
         <%= cl_image_tag('https://upload.wikimedia.org/wikipedia/commons/c/c3/Japon_hutte_exterieur.jpg', height: 150, width: 200, crop: :fill, class: 'card-degrad') %>
+      <% end %>
         <span class="card-title"><%= hut.name %></span>
       </div>
         <div class="card-content primary-txt">
