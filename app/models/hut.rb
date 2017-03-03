@@ -22,4 +22,6 @@ class Hut < ApplicationRecord
     address_changed? || zip_code_changed? || city_changed? || country_changed?
   end
 
+  has_attachment :photo
+  has_attachments :photos, :maximum => 4
 end
