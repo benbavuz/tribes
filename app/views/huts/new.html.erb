@@ -10,17 +10,17 @@
           <%= f.input :zip_code%>
           <%= f.input :city %>
           <%= f.input :country %>
+          <div class="file-field input-field">
+            <div class="btn btn-input-file-cyan">
+              <span>Photo</span>
+              <%= f.input :photo, as: :attachinary, label: false %>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Upload one file only please">
+            </div>
+          </div>
       <div class="center-align">
         <%= f.submit "Add my hut", class: 'btn-large waves-effect waves-light amber' %>
-      </div>
-      <div class="file-field input-field">
-        <div class="btn btn-input-file-cyan">
-          <span>Photo</span>
-          <%= f.input :photo, as: :attachinary, label: false %>
-        </div>
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text" placeholder="Upload one file only please">
-        </div>
       </div>
       <div class="left-align padding-top">
         <%= link_to huts_path, class: 'btn-floating btn-large light-primary-btn waves-effect waves-light' do %>
