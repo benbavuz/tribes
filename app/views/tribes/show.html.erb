@@ -28,7 +28,11 @@
       </li>
       <li>
         <div class="collapsible-header"><i class="material-icons">import_export</i>Skills</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+          <div class="collapsible-body">
+          <% @skills.uniq.each do |skill| %>
+          <div class='chip'><%= skill %></div>
+          <% end %>
+          </div>
       </li>
     </ul>
 </div>
