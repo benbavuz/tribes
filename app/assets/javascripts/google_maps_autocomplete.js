@@ -19,8 +19,9 @@ function onPlaceChanged() {
   $('#hut_address').trigger('blur').val(components.address);
   $('#hut_zip_code').val(components.zip_code);
   $('#hut_city').val(components.city);
-  if (components.country_code) {
-    $('#hut_country').val(components.country_code);
+  if (components.country_name) {
+    $('#hut_country').val(components.country_name);
+    $("#hut_country").material_select();
   }
 }
 
@@ -33,7 +34,7 @@ function getAddressComponents(place) {
   var route = null;
   var zip_code = null;
   var city = null;
-  var country_code = null;
+  var country_name = null;
   for (var i in place.address_components) {
     var component = place.address_components[i];
     for (var j in component.types) {
@@ -47,7 +48,7 @@ function getAddressComponents(place) {
       } else if (type == 'locality') {
         city = component.long_name;
       } else if (type == 'country') {
-        country_code = component.short_name;
+        country_name = component.long_name;
       }
     }
   }
@@ -56,6 +57,6 @@ function getAddressComponents(place) {
     address: street_number == null ? route : (street_number + ' ' + route),
     zip_code: zip_code,
     city: city,
-    country_code: country_code
+    country_name: country_name
   };
 }
