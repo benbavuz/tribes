@@ -1,3 +1,9 @@
-<% @huts.each do |hut| %>
-<%= hut.name %>
-<% end %>
+<div class="container">
+  <h1 class="center-align">List of huts</h1>
+  <div class="row">
+    <% @huts.each do |hut| %>
+      <%= render partial: "card", object: hut, as: :hut %>
+    <% end %>
+  </div>
+</div>
+

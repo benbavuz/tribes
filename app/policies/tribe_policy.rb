@@ -9,6 +9,10 @@ class TribePolicy < ApplicationPolicy
   true
   end
 
+  def index_by_user?
+  true
+  end
+
   def create?
   true
   end

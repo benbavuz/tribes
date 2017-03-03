@@ -6,8 +6,22 @@ class TribesController < ApplicationController
     @tribes = policy_scope(Tribe)
   end
 
+  def index_by_user
+    @user = User.find(params[:user_id])
+    @tribes = @user.tribes
+    authorize @tribes
+  end
+
   def show
     authorize @tribe
+
+    user_ids = TribeMember.where(tribe_id: @tribe.id).pluck(:user_id)
+    @huts = Hut.where(user_id: user_ids).where("latitude is not null and longitude is not null")
+    @hash = Gmaps4rails.build_markers(@huts) do |hut, marker|
+      marker.lat hut.latitude
+      marker.lng hut.longitude
+      # marker.infowindow render_to_string(partial: "lawyers/infowindow", locals: { lawyer: lawyer })
+    end
   end
 
   def new

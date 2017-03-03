@@ -1,6 +1,18 @@
 .primary-txt {
   color: $primary-text-color;
 }
-.border-dotted-cyan {
-  border: 1px dotted $default-primary-color;
+
+.card-content {
+  height:130px;
 }
+
+.card-short {
+  color: $secondary-text-color;
+  font-size: 13px;
+  padding-top: 10px;
+}
+
+.card-link {
+  color:$dark-primary-color;
+}
+
