@@ -3,7 +3,14 @@ class TribesController < ApplicationController
   before_action :set_tribe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tribes = policy_scope(Tribe)
+    if params[:search].present?
+      @tribes = policy_scope(Tribe).find_by_sql("select * FROM tribes
+        WHERE id in (select distinct tribes.id FROM tribes, tribe_members, huts
+        WHERE LOWER(city) = '#{params[:search]}'
+        AND huts.user_id = tribe_members.user_id AND tribe_members.tribe_id = tribes.id)")
+    else
+      @tribes = policy_scope(Tribe)
+    end
   end
 
   def index_by_user
