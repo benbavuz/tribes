@@ -15,5 +15,11 @@ tribe3 = Tribe.create(name: 'Spanish Tribe', about: 'Spanish Tribe by spanish pe
 tribe4 = Tribe.create(name: 'Egyptian Tribe', about: 'Egyptian Tribe by egyptian people')
 
 equipments = ["Wifi", "Printer", "Scanner", "Kitchen", "Coffe machine", "Sofa", "garden"]
+# Large skills
+specialities = ["Front-end", "Back-end", "Full-stack", "Web", "UI","Marketing", "Communication", "Freelance", "Web Development", "Creation of Web Sites", "Website Design", "Design Sense", "Customer Service Skills", "Web Server Administration", "Project Management"]
+# Specifiques skills
+skills = ["Ruby", "Php", "Javascript", "Html", "Css", "Pack Adobe", "Microsoft Office", "Wordpress", "Python", "Mobile", "CEO","JavaScript and Ajax", "PHP", "ASP", "Java", "Perl", "C++", "Mobile Support"]
 
 equipments.each { |x| Equipment.create(name: x) }
+specialities.each { |x| Skill.create(name: x) }
+skills.each { |x| Skill.create(name: x) }

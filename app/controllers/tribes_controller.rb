@@ -22,6 +22,14 @@ class TribesController < ApplicationController
       marker.lng hut.longitude
       # marker.infowindow render_to_string(partial: "lawyers/infowindow", locals: { lawyer: lawyer })
     end
+
+    @skills = []
+    @tribe.users.each do |user|
+      user.skills.each do |skill|
+       @skills << skill.name
+      end
+    end
+
   end
 
   def new
