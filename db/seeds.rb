@@ -8,6 +8,7 @@
 
 Equipment.destroy_all
 Tribe.destroy_all
+Skill.destroy_all
 
 tribe1 = Tribe.create(name: 'French Tribe', about: 'French Tribe by french people')
 tribe2 = Tribe.create(name: 'English Tribe', about: 'English Tribe by english people')

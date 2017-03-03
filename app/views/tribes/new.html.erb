@@ -5,6 +5,9 @@
         <%= f.input :name, input_html: { class: 'validate' } %>
         <%= f.input :short_desk, as: :text, input_html: { class: 'materialize-textarea' }, :maxlength=>"30" %>
         <%= f.input :about, as: :text, input_html: { class: 'materialize-textarea' } %>
+        <div class="center-align">
+          <%= f.submit "Add my tribe", class: 'btn-large waves-effect waves-light amber' %>
+        </div>
         <div class="file-field input-field">
           <div class="btn btn-input-file-cyan">
             <span>Photo</span>
@@ -13,9 +16,6 @@
           <div class="file-path-wrapper">
             <input class="file-path validate" type="text" placeholder="Upload one file only please">
           </div>
-        </div>
-        <div class="center-align">
-          <%= f.submit "Add my tribe", class: 'btn-large waves-effect waves-light amber' %>
         </div>
         <div class="left-align padding-top">
           <%= link_to tribes_path, class: 'btn-floating btn-large light-primary-btn waves-effect waves-light' do %>
@@ -26,4 +26,3 @@
       <% end %>
   </div>
 </div>
-
