@@ -13,8 +13,8 @@ class HutsController < ApplicationController
   def show
     @hut = Hut.find(params[:id])
     authorize @hut
-    @huts = []
-    @hash = Gmaps4rails.build_markers(@huts) do |hut, marker|
+    # @huts = []
+    @hash = Gmaps4rails.build_markers(@hut) do |hut, marker|
     marker.lat hut.latitude
     marker.lng hut.longitude
     end
