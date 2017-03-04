@@ -1,13 +1,12 @@
 <div class="container">
-  <h1 class="center-align">Create a tribe</h1>
-  <div class="row">
-      <%= simple_form_for @tribe do |f| %>
+  <div class = "row">
+    <div class = "col s12 col m6 offset-m3 col l6 offset-l3 login-form">
+      <div class = "card-panel">
+        <h4 class="center-align">New Tribe</h4>
+        <%= simple_form_for @tribe do |f| %>
         <%= f.input :name, input_html: { class: 'validate' } %>
-        <%= f.input :short_desk, as: :text, input_html: { class: 'materialize-textarea' }, :maxlength=>"30" %>
+        <%= f.input :short_desk, input_html: { class: 'validate' }, :maxlength=>"30" %>
         <%= f.input :about, as: :text, input_html: { class: 'materialize-textarea' } %>
-        <div class="center-align">
-          <%= f.submit "Add my tribe", class: 'btn-large waves-effect waves-light amber' %>
-        </div>
         <div class="file-field input-field">
           <div class="btn btn-input-file-cyan">
             <span>Photo</span>
@@ -17,12 +16,11 @@
             <input class="file-path validate" type="text" placeholder="Upload one file only please">
           </div>
         </div>
-        <div class="left-align padding-top">
-          <%= link_to tribes_path, class: 'btn-floating btn-large light-primary-btn waves-effect waves-light' do %>
-            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-          <% end %></br>
-          <em>Home page</em>
+        <div class="center-align" style="padding: 20px">
+          <%= f.submit "Add my tribe", class: 'btn-large waves-effect waves-light amber' %>
         </div>
-      <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
