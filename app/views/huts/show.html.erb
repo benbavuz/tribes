@@ -1,56 +1,76 @@
-<div id="map"> </div>
-  <div class="section">
-    <div class="container">
-      <div class="row">
-          <h2 class="center-align"><%= @hut.name %></h2>
-        <div class="col s12 m6">
-          <ul class="">
-            <li><i class="material-icons">email</i><%= ": " + @hut.user.email %></li>
-            <% if @hut.user.phone_number? %>
-            <li><i class="material-icons">phone</i><%= ": " + @hut.user.phone_number %></li>
-            <% end %>
-            <li><i class="material-icons">location_on</i><%= ": " + @hut.address+", "+@hut.zip_code %></li>
-            <li><%= @hut.city+", "+@hut.country %></li>
-          </ul>
-        </div>
-        <div class="col s12 m6">
-          <ul class="collapsible" data-collapsible="accordion">
-              <li>
-                <div class="collapsible-header active"><i class="material-icons">info_outline</i>About</div>
-                <div class="collapsible-body"><span><%= @hut.about %></span></div>
-              </li>
-              <li>
-                <div class="collapsible-header"><i class="material-icons">import_export</i>Equipments</div>
-                  <div class="collapsible-body">
-                  <% @hut.equipments.each do |equipment| %>
-                    <div class='chip'><%= equipment.name %></div>
+
+<div class="carousel carousel-slider" data-indicators="true" style="height: 300px;">
+  <% if @hut.photos.blank? == true %>
+      <a class="carousel-item" href="#"><img src="http://lorempixel.com/800/400/food/3"></a>
+    <% else %>
+      <% @hut.photos.each do |photo| %>
+        <a class="carousel-item" href="#"><%= cl_image_tag(photo.path, :height=>300, :width=>1291, :crop=>"crop", :zoom=>0.1) %></a>
+      <% end %>
+  <% end %>
+</div>
+
+  <div class="container">
+    <div class="row">
+      <h2 class="center-align"><%= @hut.name %></h2>
+      <div class="col s12 m6">
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header active"><i class="material-icons">info_outline</i>Contact</div>
+              <div class="collapsible-body">
+                <ul>
+                  <% if @hut.user.phone_number? %>
+                  <li><i class="material-icons">phone</i><%= ": " + @hut.user.phone_number %></li>
                   <% end %>
-                  </div>
-              </li>
-              <li>
-                <div class="collapsible-header"><i class="material-icons">done</i>Minimum requirements</div>
-                <div class="collapsible-body"><span></span></div>
-              </li>
-            </ul>
-        </div>
-        <div class="col s12 m12">
-          <div class="carousel carousel-slider center" data-indicators="true">
-            <div class="carousel-fixed-item center">
-              <a class="btn waves-effect white grey-text darken-text-2">Booking the hut</a>
-            </div>
-            <% if @hut.photos.blank? %>
-                <a class="carousel-item" href="#"><img src="https://s2.qwant.com/thumbr/0x0/5/1/327f1a9730f8f9a3db456dc43e0588/b_1_q_0_p_0.jpg?u=http%3A%2F%2Fst.depositphotos.com%2F1029662%2F1324%2Fv%2F950%2Fdepositphotos_13242438-Africa-Red-Indian-Eskimo-Man-Woman-National-Traditional-Costume-Dress-Clothing-Icon-Symbol-Sign-Pictogram.jpg&q=0&b=1&p=0&a=1"></a>
-              <% else %>
-                <% @hut.photos.each do |photo| %>
-                  <a class="carousel-item" href="#"><%= cl_image_tag(photo.path) %></a>
+                  <li><i class="material-icons">email</i><%= ": " + @hut.user.email %></li>
+                  <li><i class="material-icons">location_on</i><%= ": " + @hut.address+", "+@hut.zip_code+", "+@hut.city+", "+@hut.country %></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>About</div>
+              <div class="collapsible-body"><span><%= @hut.about %></span></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">import_export</i>Equipments</div>
+                <div class="collapsible-body">
+                <% @hut.equipments.each do |equipment| %>
+                  <div class='chip'><%= equipment.name %></div>
                 <% end %>
-            <% end %>
-            </div>
-        </div>
+                </div>
+            </li>
+          </ul>
       </div>
+      <div class="col s12 m6">
+      <!-- place for calender -->
+        <table class="centered">
+          <thead>
+            <tr>
+                <th data-field="day">calender demo</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Jeudi 11 Nov 2017</td>
+            </tr>
+            <tr>
+              <td>vendredi 12 Nov 2017</td>
+            </tr>
+            <tr>
+              <td>Samedi 13 Nov 2017</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col s12 m12 center-align">
+        <a class="btn margin-btn" onclick="Materialize.toast('Congradulation you have booked a hut!', 4000)">Book a hut</a>
+      </div>
+      <div class="col s12 m12">
+        <div id="map"></div>
+      </div>
+
     </div>
   </div>
-
 <!-- JS script for map rendering -->
 
 <% content_for(:after_js) do %>
@@ -68,10 +88,7 @@
         }
       });
     });
-    $(window).scroll(function(){
-        if($(window).scrollTop()<$('#map').height() + 21)
-          $('#map').css({'transform':'translate(0px,'+$(window).scrollTop()+'px)'});
-      });
+    <!-- carousel JS script -->
     $('.carousel.carousel-slider').carousel({fullWidth: true});
   <% end %>
 <% end %>
