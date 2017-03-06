@@ -6,4 +6,14 @@ class Tribe < ApplicationRecord
   has_many :users, through: :tribe_members
 
   has_attachment :photo
+
+  def skills_tribe
+    skills = []
+    users.each do |user|
+      user.skills.each do |skill|
+       skills << skill.name
+      end
+    end
+    return skills
+  end
 end
