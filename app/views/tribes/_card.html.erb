@@ -14,8 +14,8 @@
               <p class="card-short"><%= tribe.short_desk %></p>
             </div>
             <div class="card-action">
-              <a href="#" class="cyan-text text-darken-2">SKILLS</a>
-              <a href="#modal1" class="cyan-text text-darken-2">MAP</a>
+              <a href="#modalskills" class="cyan-text text-darken-2">SKILLS</a>
+              <a href="#modalmap" class="cyan-text text-darken-2">MAP</a>
               <%= link_to "SHOW", tribe_path(tribe), class: "cyan-text text-darken-2" %>
               <!-- <a href="#" class="cyan-text text-darken-2">SHOW</a> -->
             </div>
@@ -25,10 +25,7 @@
 
   <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-$(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
-  });
+
   <% end %>
   <% end %>
 
@@ -36,11 +33,23 @@ $(document).ready(function(){
   <div class = "container center">
   <!-- Modal Trigger -->
 
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal">
+    <!--Modal Structure skills -->
+    <div id="modalskills" class="modal">
       <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
+        <h4>Tribe skills</h4>
+        <% tribe.skills_tribe.uniq.each do |skill| %>
+          <div class='chip'><%= skill %></div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
+    </div>
+    <!-- Modal Structure map-->
+    <div id="modalmap" class="modal">
+      <div class="modal-content">
+        <h4>Tribe map</h4>
+        <div id="map" style="width: 100%; height: 300px;"></div>
       </div>
       <div class="modal-footer">
         <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -48,3 +57,31 @@ $(document).ready(function(){
     </div>
 </div>
 
+
+<!-- Map -->
+
+<!-- Map rendering -->
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+  $(document).ready(function(){
+    <!-- // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered -->
+    $('.modal').modal();
+    <!-- Code JSscript for huts  -->
+    $('#modalmap').modal({
+      ready: function(modal, trigger) {
+        var handler = Gmaps.build('Google');
+        handler.buildMap({ internal: { id: 'map' } }, function() {
+          markers = handler.addMarkers(<%= raw tribe.coordinates.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+          if (markers.length == 0) {
+            handler.getMap().setZoom(2);
+          } else if (markers.length == 1) {
+            handler.getMap().setZoom(14);
+          }
+        });
+      },
+    });
+  });
+  <% end %>
+<% end %>
