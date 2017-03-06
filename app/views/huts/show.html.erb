@@ -1,25 +1,73 @@
-
-<%= @hut.name %>
-
-
-<div id="map" style="width: 100%; height: 480px;"> </div>
+<div id="map"> </div>
+  <div class="section">
+    <div class="container">
+      <div class="row">
+          <h2 class="center-align"><%= @hut.name %></h2>
+        <div class="col s12 m6">
+          <ul class="flow-text">
+            <li><i class="material-icons">email</i><%= ": " + @hut.user.email %></li>
+            <% if @hut.user.phone_number? %>
+            <li><i class="material-icons">phone</i><%= ": " + @hut.user.phone_number %></li>
+            <% end %>
+            <li><i class="material-icons">location_on</i><%= ": " + @hut.address+", "+@hut.zip_code+", "+@hut.city+", "+@hut.country %></li>
+          </ul>
+        </div>
+        <div class="col s12 m6">
+          <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header active"><i class="material-icons">done</i>Minimum requirements</div>
+                <div class="collapsible-body"><span></span></div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">info_outline</i>About</div>
+                <div class="collapsible-body"><span><%= @hut.about %></span></div>
+              </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">import_export</i>Equipments</div>
+                  <div class="collapsible-body">
+                  <% @hut.equipments.each do |equipment| %>
+                    <div class='chip'><%= equipment.name %></div>
+                  <% end %>
+                  </div>
+              </li>
+            </ul>
+        </div>
+        <div class="col s12 m12">
+          <div class="carousel carousel-slider center" data-indicators="true">
+            <div class="carousel-fixed-item center">
+              <a class="btn waves-effect white grey-text darken-text-2">Booking the hut</a>
+            </div>
+              <a class="carousel-item" href="#one!"><img src="http://lorempixel.com/800/400/food/1"></a>
+              <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/800/400/food/2"></a>
+              <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/800/400/food/3"></a>
+              <a class="carousel-item" href="#four!"><img src="http://lorempixel.com/800/400/food/4"></a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <!-- JS script for map rendering -->
 
 <% content_for(:after_js) do %>
-<%= javascript_tag do %>
-$(document).ready(function() {
-  var handler = Gmaps.build('Google');
-  handler.buildMap({ internal: { id: 'map' } }, function() {
-    markers = handler.addMarkers(<%= raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    if (markers.length == 0) {
-      handler.getMap().setZoom(2);
-    } else if (markers.length == 1) {
-      handler.getMap().setZoom(11);
-    }
-  });
-});
+    <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(11);
+        }
+      });
+    });
+    $(window).scroll(function(){
+        if($(window).scrollTop()<$('#map').height() + 21)
+          $('#map').css({'transform':'translate(0px,'+$(window).scrollTop()+'px)'});
+      });
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
   <% end %>
 <% end %>
