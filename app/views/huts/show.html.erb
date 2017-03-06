@@ -1,25 +1,103 @@
 
-<%= @hut.name %>
+<div class="carousel carousel-slider" data-indicators="true" style="height: 300px;">
+  <% if @hut.photos.blank? == true %>
+      <a class="carousel-item" href="#"><img src="http://lorempixel.com/800/400/food/3"></a>
+    <% else %>
+      <% @hut.photos.each do |photo| %>
+        <a class="carousel-item" href="#"><%= cl_image_tag(photo.path, :height=>300, :width=>1291, :crop=>"crop", :zoom=>0.1) %></a>
+      <% end %>
+  <% end %>
+</div>
 
+  <div class="container">
+    <div class="row">
+      <h2 class="center-align"><%= @hut.name %></h2>
+      <div class="col s12 m6">
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header active"><i class="material-icons">contacts</i>Contact</div>
+              <div class="collapsible-body">
+                <table>
+                  <tr>
+                    <td><i class="material-icons">phone</i></td>
+                    <td><%= @hut.user.phone_number %></td>
+                  </tr>
+                    <% if @hut.user.phone_number? %>
+                  <tr>
+                    <td><i class="material-icons">email</i></td>
+                    <td><%= @hut.user.email %></td>
+                  </tr>
+                    <% end %>
+                  <tr>
+                    <td><i class="material-icons">location_on</i></td>
+                    <td><%= @hut.address+", "+@hut.zip_code+", "+@hut.city+", "+@hut.country %></td>
+                  </tr>
+                </table>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">info_outline</i>About</div>
+              <div class="collapsible-body"><span><%= @hut.about %></span></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">devices_other</i>Equipments</div>
+                <div class="collapsible-body">
+                <% @hut.equipments.each do |equipment| %>
+                  <div class='chip'><%= equipment.name %></div>
+                <% end %>
+                </div>
+            </li>
+          </ul>
+      </div>
+      <div class="col s12 m6">
+      <!-- place for calender -->
+        <table class="centered">
+          <thead>
+            <tr>
+                <th data-field="day">calender demo</th>
+            </tr>
+          </thead>
 
-<div id="map" style="width: 100%; height: 480px;"> </div>
+          <tbody>
+            <tr>
+              <td>Jeudi 11 Nov 2017</td>
+            </tr>
+            <tr>
+              <td>vendredi 12 Nov 2017</td>
+            </tr>
+            <tr>
+              <td>Samedi 13 Nov 2017</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col s12 m12 center-align">
+        <a class="btn margin-btn" onclick="Materialize.toast('Congradulation you have booked a hut!', 4000)">Book a hut</a>
+      </div>
+      <div class="col s12 m12">
+        <div id="map"></div>
+      </div>
 
+    </div>
+  </div>
 <!-- JS script for map rendering -->
 
 <% content_for(:after_js) do %>
-<%= javascript_tag do %>
-$(document).ready(function() {
-  var handler = Gmaps.build('Google');
-  handler.buildMap({ internal: { id: 'map' } }, function() {
-    markers = handler.addMarkers(<%= raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    if (markers.length == 0) {
-      handler.getMap().setZoom(2);
-    } else if (markers.length == 1) {
-      handler.getMap().setZoom(11);
-    }
-  });
-});
+    <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(11);
+        }
+      });
+    });
+    <!-- carousel JS script -->
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
   <% end %>
 <% end %>

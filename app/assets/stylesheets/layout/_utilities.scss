@@ -10,6 +10,11 @@
   padding-bottom: 5em;
 }
 
+// margin
+.margin-btn {
+  margin: 2em;
+}
+
 // Backgrounds
 .bg-black {
   background: #4a4a4a;
@@ -22,4 +27,18 @@
 }
 .bg-dark-blue {
   background: #3b5998;
+}
+
+// css for hut's show
+// .section {
+//   position:relative;
+//   width:100%;
+//   background-color:white;
+// }
+
+#map {
+  width:100%;
+  height:300px;
+  // overflow:hidden;
+  // position:relative;
 }
