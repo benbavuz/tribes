@@ -37,10 +37,38 @@
     </ul>
 </div>
 
-<!-- CTA -->
-<div class="row center map-tribe">
-  <a href="#" id="download-button" class="btn-large waves-effect waves-light amber"> Request to Join </a>
-</div>
+
+
+  <div class="row center map-tribe">
+    <a class="btn-large waves-effect waves-light amber" href="#modal2">Request to join</a>
+  </div>
+  <!-- Modal Structure -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>Confirm your request</h4>
+      <p>Your request to join the tribe is sent to the admin you will receive an answer soon</p>
+    </div>
+    <div class="modal-footer">
+
+
+<%= link_to "Agree", tribes_path, class: "modal-action modal-close waves-effect waves-green btn-flat" %>
+
+
+    </div>
+  </div>
+
+
+
+  <% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+  <% end %>
+  <% end %>
+
+
 
 <!-- Map -->
 <div class = "map-tribe">
