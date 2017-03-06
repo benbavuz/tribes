@@ -15,15 +15,24 @@
       <div class="col s12 m6">
         <ul class="collapsible" data-collapsible="accordion">
             <li>
-              <div class="collapsible-header active"><i class="material-icons">info_outline</i>Contact</div>
+              <div class="collapsible-header active"><i class="material-icons">contacts</i>Contact</div>
               <div class="collapsible-body">
-                <ul>
-                  <% if @hut.user.phone_number? %>
-                  <li><i class="material-icons">phone</i><%= ": " + @hut.user.phone_number %></li>
-                  <% end %>
-                  <li><i class="material-icons">email</i><%= ": " + @hut.user.email %></li>
-                  <li><i class="material-icons">location_on</i><%= ": " + @hut.address+", "+@hut.zip_code+", "+@hut.city+", "+@hut.country %></li>
-                </ul>
+                <table>
+                  <tr>
+                    <td><i class="material-icons">phone</i></td>
+                    <td><%= @hut.user.phone_number %></td>
+                  </tr>
+                    <% if @hut.user.phone_number? %>
+                  <tr>
+                    <td><i class="material-icons">email</i></td>
+                    <td><%= @hut.user.email %></td>
+                  </tr>
+                    <% end %>
+                  <tr>
+                    <td><i class="material-icons">location_on</i></td>
+                    <td><%= @hut.address+", "+@hut.zip_code+", "+@hut.city+", "+@hut.country %></td>
+                  </tr>
+                </table>
               </div>
             </li>
             <li>
@@ -31,7 +40,7 @@
               <div class="collapsible-body"><span><%= @hut.about %></span></div>
             </li>
             <li>
-              <div class="collapsible-header"><i class="material-icons">import_export</i>Equipments</div>
+              <div class="collapsible-header"><i class="material-icons">devices_other</i>Equipments</div>
                 <div class="collapsible-body">
                 <% @hut.equipments.each do |equipment| %>
                   <div class='chip'><%= equipment.name %></div>
