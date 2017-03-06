@@ -1,22 +1,43 @@
-
   <div class ="container search-bar">
-        <nav>
-          <form action = "<%= tribes_path %>" method = "get" >
-            <div class="input-field white">
-              <input id="search" type="search" name="search" required>
-              <label class="label-icon" for="search"><i class="material-icons grey-text text-darken-4">search</i></label>
-              <i class="material-icons">close</i>
-            </div>
+  <h5 class="">Search a tribe</h5>
+     <form action = "<%= tribes_path %>" method = "get" >
+              <select name = "search" id="search" type="search">
+              <option value="" disabled selected>Choose your city</option>
+              <option value="marseille" data-icon="https://mediap.flypgs.com/awh/400/400//files/sehirlergorsel/marsilya.jpg" class="left circle">Marseille</option>
+              <option value="lyon" data-icon="http://www.opera-bien-etre.fr/media/thumbnails/centre_ville_de_lyon_espace_coworking_salon_de_bienetre_cooperatif_opera__066161700_1536_23032015.jpg" class="left circle">Lyon</option>
+              <option value="paris" data-icon="https://mediap.flypgs.com/awh/400/400//files/sehirlergorsel/paris.jpg" class="left circle">Paris</option>
+              <option value="bordeaux" data-icon="http://appartdebordeaux.com/wp-content/uploads/2016/03/bordeaux-visite-400x400.jpg" class="left circle">Bordeaux</option>
+              <option value="nantes" data-icon="http://www.presseocean.fr/sites/presseocean.fr/files/imagecache/facebook/2015/09/10/miroir_eau_nantes_cb_po_34a2020-379486.jpg" class="left circle">Nantes</option>
+             </select>
+      <input type="checkbox" id="skill1"/>
+      <label for="skill1" style="margin:10px">Web development</label>
+      <input type="checkbox" id="skill2" />
+      <label for="skill2" style="margin:10px">Marketing</label>
+      <input type="checkbox" id="skill3" />
+      <label for="skill3" style="margin:10px">Communication</label>
+      <input type="checkbox" id="skill3" />
+      <label for="skill4" style="margin:10px">Design</label>
+      <input type="checkbox" id="skill4" />
+      <label for="skill5" style="margin:10px">Project Management</label>
+      <input type="checkbox" id="skill6" />
+      <label for="skill6" style="margin:10px">Law</label>
+
+      <input type = "submit" class = "btn-large waves-effect waves-light amber center">
           </form>
-        </nav>
 </div>
 
 
 
 
 
-<div class="container">
-  <h3 class="center-align">List of Tribes</h3>
+<div class="container" style="padding-top: 30px">
+   <div class = "search-headers">
+   <% if params[:search].present? %>
+       <h5 class="">Tribes in <%= params[:search] %></h5>
+     <% else %>
+       <h5 class="">All tribes</h5>
+     <% end %>
+    </div>
   <div class="row">
     <% @tribes.each do |tribe| %>
 
