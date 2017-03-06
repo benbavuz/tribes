@@ -9,7 +9,8 @@
             <% if @hut.user.phone_number? %>
             <li><i class="material-icons">phone</i><%= ": " + @hut.user.phone_number %></li>
             <% end %>
-            <li><i class="material-icons">location_on</i><%= ": " + @hut.address+", "+@hut.zip_code+", "+@hut.city+", "+@hut.country %></li>
+            <li><i class="material-icons">location_on</i><%= ": " + @hut.address+", "+@hut.zip_code %></li>
+            <li><%= @hut.city+", "+@hut.country %></li>
           </ul>
         </div>
         <div class="col s12 m6">
