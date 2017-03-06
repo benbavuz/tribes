@@ -4,7 +4,7 @@
       <div class="row">
           <h2 class="center-align"><%= @hut.name %></h2>
         <div class="col s12 m6">
-          <ul class="flow-text">
+          <ul class="">
             <li><i class="material-icons">email</i><%= ": " + @hut.user.email %></li>
             <% if @hut.user.phone_number? %>
             <li><i class="material-icons">phone</i><%= ": " + @hut.user.phone_number %></li>
@@ -16,11 +16,7 @@
         <div class="col s12 m6">
           <ul class="collapsible" data-collapsible="accordion">
               <li>
-                <div class="collapsible-header active"><i class="material-icons">done</i>Minimum requirements</div>
-                <div class="collapsible-body"><span></span></div>
-              </li>
-              <li>
-                <div class="collapsible-header"><i class="material-icons">info_outline</i>About</div>
+                <div class="collapsible-header active"><i class="material-icons">info_outline</i>About</div>
                 <div class="collapsible-body"><span><%= @hut.about %></span></div>
               </li>
               <li>
@@ -31,6 +27,10 @@
                   <% end %>
                   </div>
               </li>
+              <li>
+                <div class="collapsible-header"><i class="material-icons">done</i>Minimum requirements</div>
+                <div class="collapsible-body"><span></span></div>
+              </li>
             </ul>
         </div>
         <div class="col s12 m12">
@@ -38,10 +38,13 @@
             <div class="carousel-fixed-item center">
               <a class="btn waves-effect white grey-text darken-text-2">Booking the hut</a>
             </div>
-              <a class="carousel-item" href="#one!"><img src="http://lorempixel.com/800/400/food/1"></a>
-              <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/800/400/food/2"></a>
-              <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/800/400/food/3"></a>
-              <a class="carousel-item" href="#four!"><img src="http://lorempixel.com/800/400/food/4"></a>
+            <% if @hut.photos.blank? %>
+                <a class="carousel-item" href="#"><img src="https://s2.qwant.com/thumbr/0x0/5/1/327f1a9730f8f9a3db456dc43e0588/b_1_q_0_p_0.jpg?u=http%3A%2F%2Fst.depositphotos.com%2F1029662%2F1324%2Fv%2F950%2Fdepositphotos_13242438-Africa-Red-Indian-Eskimo-Man-Woman-National-Traditional-Costume-Dress-Clothing-Icon-Symbol-Sign-Pictogram.jpg&q=0&b=1&p=0&a=1"></a>
+              <% else %>
+                <% @hut.photos.each do |photo| %>
+                  <a class="carousel-item" href="#"><%= cl_image_tag(photo.path) %></a>
+                <% end %>
+            <% end %>
             </div>
         </div>
       </div>
