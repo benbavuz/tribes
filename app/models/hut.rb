@@ -9,6 +9,7 @@ class Hut < ApplicationRecord
 
   has_many :hut_equipments
   has_many :equipments, through: :hut_equipments
+  has_many :availabilities
 
   # implement methode to use geocode
   geocoded_by :full_address
