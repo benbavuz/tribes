@@ -20,6 +20,7 @@ class HutsController < ApplicationController
     end
   end
 
+
   def new
     @hut = Hut.new
     authorize @hut

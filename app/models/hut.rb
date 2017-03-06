@@ -24,5 +24,17 @@ class Hut < ApplicationRecord
     address_changed? || zip_code_changed? || city_changed? || country_changed?
   end
 
+  def ref(x)
+    if x == x + 1
+      '#two!'
+    elsif x == x + 2
+      '#tree!'
+    elsif x == x + 3
+      '#four!'
+    else
+      '#one!'
+    end
+  end
+
   has_attachments :photos, :maximum => 4
 end
