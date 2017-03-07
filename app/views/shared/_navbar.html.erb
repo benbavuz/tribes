@@ -4,33 +4,33 @@
 
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
-    <li class = "cyan-text">
-      <%= link_to "#" do %>
-        <i class="fa fa-user"> </i> <%= t(".profile", default: "Profile") %>
+    <li class= "cyan-text">
+      <%= link_to "#", class: "cyan-text" do %>
+        <i class="fa fa-user cyan-text"> </i> <%= t(".profile", default: "Profile") %>
       <% end %>
     </li>
 
      <li>
-      <%= link_to user_huts_path(current_user) do %>
-        <i class="fa fa-home"> </i> <%= t(".profile", default: "My Hut") %>
+      <%= link_to user_huts_path(current_user), class: "cyan-text" do %>
+        <i class="fa fa-home cyan-text"> </i> <%= t(".profile", default: "My Hut") %>
       <% end %>
     </li>
 
     <li>
-      <%= link_to user_tribes_path(current_user) do %>
-        <i class="fa fa-fire"> </i> <%= t(".profile", default: "My Tribes") %>
+      <%= link_to user_tribes_path(current_user), class: "cyan-text" do %>
+        <i class="fa fa-fire cyan-text"> </i> <%= t(".profile", default: "My Tribes") %>
       <% end %>
     </li>
 
     <li>
-      <%= link_to new_tribe_path do %>
-        <i class="fa fa-plus"> </i> <%= t(".profile", default: "New Tribe") %>
+      <%= link_to new_tribe_path, class: "cyan-text" do %>
+        <i class="fa fa-plus cyan-text"> </i> <%= t(".profile", default: "New Tribe") %>
       <% end %>
     </li>
 
     <li>
-      <%= link_to destroy_user_session_path, method: :delete do %>
-        <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+      <%= link_to destroy_user_session_path, class: "cyan-text", method: :delete do %>
+        <i class="fa fa-sign-out cyan-text"></i>  <%= t(".sign_out", default: "Log out") %>
       <% end %>
     </li>
 </ul>
