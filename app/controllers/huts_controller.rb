@@ -6,13 +6,13 @@ class HutsController < ApplicationController
         year = params[:date].to_date.year
         month = params[:date].to_date.month
         day = params[:date].to_date.day
-        start_hour = params[:start_time].to_time.hour
-        end_hour = params[:end_time].to_time.hour
+        start_hour = params[:start_user].to_time.hour
+        end_hour = params[:end_user].to_time.hour
 
         start_asked = DateTime.new(year,month,day,start_hour)
         end_asked = DateTime.new(year,month,day,end_hour)
-        huts_ids = Availability.where(start_asked >= :start_time && end_asked <= :end_time).pluck(:hut_id)
-        @huts = Hut.where(id: huts_ids)
+        huts_ids = Availability.where(start_asked == :start_date).pluck(:hut_id)
+        @huts = policy_scope(Hut).where(id: huts_ids)
     else
     @huts = policy_scope(Hut)
   end
