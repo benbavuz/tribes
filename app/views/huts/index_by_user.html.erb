@@ -1,19 +1,4 @@
 <div class ="container">
-    <form class="row" action="<%= huts_path %>" method="get">
-      <div class="input-field col s6">
-        <input class="datepicker" type="date" name="startdate" placeholder="Check Innn (Date)" required>
-        <input class="timepicker" type="time" name="starthour" value="08:00:00" required>
-      </div>
-       <div class="input-field col s6">
-        <input class="datepicker" type="date" name="enddate" placeholder="Check Out (Date)" required>
-        <input class="timepicker" type="time" name="endhour" value="20:00:00" required>
-      </div>
-      <div class="input-field col s8 push-s5">
-        <input class="waves-effect waves-light btn-large" type="submit" name="search">
-      </div>
-    </form>
-
-
   <div class="row">
     <h1 class="center-align">List of huts</h1>
     <% @huts.each do |hut| %>
@@ -21,15 +6,3 @@
     <% end %>
   </div>
 </div>
-
-
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-
-    $('.datepicker').pickadate();
-
-    $('.timepicker').pickatime();
-
-  <% end %>
-<% end %>
