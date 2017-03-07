@@ -18,16 +18,16 @@
               <div class="collapsible-header active"><i class="material-icons">contacts</i>Contact</div>
               <div class="collapsible-body">
                 <table>
-                  <tr>
-                    <td><i class="material-icons">phone</i></td>
-                    <td><%= @hut.user.phone_number %></td>
-                  </tr>
-                    <% if @hut.user.phone_number? %>
+                  <% if @hut.user.phone_number? %>
+                    <tr>
+                      <td><i class="material-icons">phone</i></td>
+                      <td><%= @hut.user.phone_number %></td>
+                    </tr>
+                  <% end %>
                   <tr>
                     <td><i class="material-icons">email</i></td>
                     <td><%= @hut.user.email %></td>
                   </tr>
-                    <% end %>
                   <tr>
                     <td><i class="material-icons">location_on</i></td>
                     <td><%= @hut.address+", "+@hut.zip_code+", "+@hut.city+", "+@hut.country %></td>
@@ -51,25 +51,20 @@
       </div>
       <div class="col s12 m6">
       <!-- place for calender -->
-        <table class="centered">
-          <thead>
-            <tr>
-                <th data-field="day">calender demo</th>
-            </tr>
-          </thead>
+          <ul class="collection with-header">
+            <li class="collection-header cyan"><h4>Availability</h4></li>
+            <% @hut.availabilities.each do |availability| %>
+              <li class="collection-item">
+                <div><%= availability.start_date %><a href="#!" class="secondary-content"><i class="material-icons">today</i></a></div>
+              </li>
+            <% end %>
+          </ul>
 
-          <tbody>
-            <tr>
-              <td>Jeudi 11 Nov 2017</td>
-            </tr>
-            <tr>
-              <td>vendredi 12 Nov 2017</td>
-            </tr>
-            <tr>
-              <td>Samedi 13 Nov 2017</td>
-            </tr>
-          </tbody>
-        </table>
+
+
+
+
+
       </div>
       <div class="col s12 m12 center-align">
         <a class="btn margin-btn" onclick="Materialize.toast('Congradulation you have booked a hut!', 4000)">Book a hut</a>
