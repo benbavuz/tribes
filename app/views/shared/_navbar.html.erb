@@ -17,6 +17,18 @@
     </li>
 
     <li>
+      <%= link_to user_tribes_path(current_user) do %>
+        <i class="fa fa-fire"> </i> <%= t(".profile", default: "My Tribes") %>
+      <% end %>
+    </li>
+
+    <li>
+      <%= link_to new_tribe_path do %>
+        <i class="fa fa-plus"> </i> <%= t(".profile", default: "New Tribe") %>
+      <% end %>
+    </li>
+
+    <li>
       <%= link_to destroy_user_session_path, method: :delete do %>
         <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
       <% end %>
@@ -26,18 +38,19 @@
 <div class = "navbar-fixed">
   <nav>
     <div class="nav-wrapper white">
-        <%= link_to "/" do %>
-          <%= image_tag 'logo.png', width: 50, height: 56%>
-        <% end %>
+      <%= link_to "/" do %>
+      <%= image_tag 'logo.png', width: 50, height: 56%>
+      <% end %>
       <a href="/" class="brand-logo cyan-text" style="padding-left: 8px; font-family: 'Pacifico' ">Tribes</a>
       <ul class="right hide-on-med-and-down">
-        <li><%= link_to "My tribes", user_tribes_path(current_user), class: "cyan-text" %></li>
-        <li><%= link_to "Create a tribe", new_tribe_path, class: "cyan-text" %></li>
+        <li><%= link_to "Join a Tribe", tribes_path, class: "waves-effect waves-light btn cyan" %></li>
+        <li><%= link_to "Book a Hut", huts_path, class: "waves-effect waves-light btn amber" %></li>
         <!-- Dropdown Trigger -->
         <li><a class="dropdown-button cyan-text" href="#!" data-activates="dropdown1">My account<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
     </div>
   </nav>
+
 </div>
 
 
@@ -50,6 +63,8 @@
         <% end %>
         <a href="/" class="brand-logo cyan-text" style="padding-left: 8px; font-family: 'Pacifico' ">Tribes</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
+         <li><%= link_to "Join a Tribe", tribes_path, class: "waves-effect waves-light btn cyan" %></li>
+        <li><%= link_to "Book a Hut", huts_path, class: "waves-effect waves-light btn amber" %></li>
           <li><%= link_to "Create a tribe", new_tribe_path, class: "cyan-text" %></li>
           <li><%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "cyan-text" %></li>
         </ul>
@@ -57,10 +72,6 @@
     </nav>
 </div>
 <% end %>
-
-
-
-
 
 
 
