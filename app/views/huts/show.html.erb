@@ -52,10 +52,14 @@
       <div class="col s12 m6">
       <!-- place for calender -->
           <ul class="collection with-header">
-            <li class="collection-header cyan"><h4>Availability</h4></li>
+            <li class="collection-header cyan">Availability</li>
             <% @hut.availabilities.each do |availability| %>
               <li class="collection-item">
-                <div><%= availability.start_date %><a href="#!" class="secondary-content"><i class="material-icons">today</i></a></div>
+                <div>
+                  Departure : <span class="indigo-text"><%= l(availability.start_date, format: :long) %></span>
+                  </br>Arrival : <span class="red-text"><%= l(availability.end_date, format: :long) %></span>
+                  <a href="#!" class="secondary-content"><i class="material-icons">today</i></a>
+                </div>
               </li>
             <% end %>
           </ul>
