@@ -11,7 +11,10 @@ class HutsController < ApplicationController
 
         start_asked = DateTime.new(year,month,day,start_hour)
         end_asked = DateTime.new(year,month,day,end_hour)
-        huts_ids = Availability.where(start_asked == :start_date).pluck(:hut_id)
+        huts_ids = Availability
+          .where("start_date <= ? AND end_date >= ?", start_asked, end_asked)
+          .pluck(:hut_id)
+
         @huts = policy_scope(Hut).where(id: huts_ids)
     else
     @huts = policy_scope(Hut)
