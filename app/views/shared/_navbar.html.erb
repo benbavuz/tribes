@@ -4,10 +4,10 @@
 
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
-    <li class= "cyan-text">
-      <%= link_to "#", class: "cyan-text" do %>
+    <li class = "cyan-text">
+      <%= link_to user_profile_path(current_user), class: "cyan-text" do %>
         <i class="fa fa-user cyan-text"> </i> <%= t(".profile", default: "Profile") %>
-      <% end %>
+       <% end %>
     </li>
 
      <li>
