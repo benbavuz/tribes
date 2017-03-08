@@ -8,12 +8,18 @@
 
 Equipment.destroy_all
 Tribe.destroy_all
+TribeMember.destroy_all
 Skill.destroy_all
 
-tribe1 = Tribe.create(name: 'French Tribe', about: 'French Tribe by french people')
-tribe2 = Tribe.create(name: 'English Tribe', about: 'English Tribe by english people')
-tribe3 = Tribe.create(name: 'Spanish Tribe', about: 'Spanish Tribe by spanish people')
-tribe4 = Tribe.create(name: 'Egyptian Tribe', about: 'Egyptian Tribe by egyptian people')
+
+tribe1 = Tribe.create(id: 1, name: 'French Tribe', about: 'French Tribe by french people')
+tribe2 = Tribe.create(id: 2, name: 'English Tribe', about: 'English Tribe by english people')
+tribe3 = Tribe.create(id: 3, name: 'Spanish Tribe', about: 'Spanish Tribe by spanish people')
+tribe4 = Tribe.create(id: 4, name: 'Egyptian Tribe', about: 'Egyptian Tribe by egyptian people')
+
+tm1 = TribeMember.create(tribe_id: 1, user_id: 1)
+tm2 = TribeMember.create(tribe_id: 3, user_id: 1)
+
 
 equipments = ["Wifi", "Printer", "Scanner", "Kitchen", "Coffe machine", "Sofa", "garden"]
 # Large skills
