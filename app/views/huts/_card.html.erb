@@ -1,16 +1,18 @@
 <div class="col s12 m4">
   <%= link_to hut_path(hut) do %>
     <div class="card border-dotted-cyan">
-      <div class="card-image" >
+      <div class="card-image">
       <% if hut.photos? %>
         <%= cl_image_tag("#{hut.photos.first.path}",  height: 150, width: 200) %>
       <% else %>
         <%= cl_image_tag('https://upload.wikimedia.org/wikipedia/commons/c/c3/Japon_hutte_exterieur.jpg', height: 150, width: 200, crop: :fill) %>
       <% end %>
-        <span class="card-title"><%= hut.name %></span>
       </div>
         <div class="card-content primary-txt">
-          <p><%= hut.about.blank? ? 'Click to see us' : hut.about[0..30]+'....' %></p>
+          <h6 style="padding-bottom: 10px" class = "cyan-text text-darken-2"><%= hut.name.upcase %></h6>
+          <p><%= hut.address %></p>
+          <p><%= hut.zip_code %>  <%= hut.city %></p>
+
       </div>
     </div>
   <% end %>
