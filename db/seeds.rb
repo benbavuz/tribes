@@ -11,6 +11,7 @@ Tribe.destroy_all
 TribeMember.destroy_all
 Skill.destroy_all
 
+
 tribe1 = Tribe.create(id: 1, name: 'French Tribe', about: 'French Tribe by french people')
 tribe2 = Tribe.create(id: 2, name: 'English Tribe', about: 'English Tribe by english people')
 tribe3 = Tribe.create(id: 3, name: 'Spanish Tribe', about: 'Spanish Tribe by spanish people')
