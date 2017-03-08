@@ -22,7 +22,7 @@ class HutsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@huts) do |hut, marker|
       marker.lat hut.latitude
       marker.lng hut.longitude
-      # marker.infowindow render_to_string(partial: "lawyers/infowindow", locals: { lawyer: lawyer })
+      marker.infowindow render_to_string(partial: "huts/infowindow", locals: { hut: hut })
     end
   end
 
