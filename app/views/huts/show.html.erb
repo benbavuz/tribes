@@ -1,10 +1,10 @@
 
 <div class="carousel carousel-slider" data-indicators="true" style="height: 300px;">
   <% if @hut.photos.blank? == true %>
-      <a class="carousel-item" href="#"><img src="http://lorempixel.com/800/400/food/3"></a>
+      <a class="carousel-item" href="#"><img src="http://ghk.h-cdn.co/assets/cm/15/11/54ff822633182-living-rooms-masculine-de.jpg"></a>
     <% else %>
       <% @hut.photos.each do |photo| %>
-        <a class="carousel-item" href="#"><%= cl_image_tag(photo.path, :height=>300, :width=>1291, :crop=>"crop", :zoom=>0.1) %></a>
+        <a class="carousel-item" href="#"><%= cl_image_tag(photo.path, :height=>400, :width=>1291, :crop=>"crop", :zoom=>0.1) %></a>
       <% end %>
   <% end %>
 </div>
@@ -52,13 +52,13 @@
     <div class="col s12 m6">
     <!-- place for calender -->
         <ul class="collection with-header">
-          <li class="collection-header cyan">Availability</li>
+          <li class="collection-header grey darken-4 amber-text">Availability</li>
           <% @hut.availabilities.each do |availability| %>
             <li class="collection-item">
               <div>
-                Departure : <span class="indigo-text"><%= l(availability.start_date, format: :long) %></span>
-                </br>Arrival : <span class="red-text"><%= l(availability.end_date, format: :long) %></span>
-                <a href="#!" class="secondary-content"><i class="material-icons">today</i></a>
+                <span class="cyan-text"><%= availability.start_date.strftime("%B %d, %Y") %></span>
+                </br><span class="">From <%= availability.start_date.strftime("%H:%M") %> To <%= availability.end_date.strftime("%H:%M") %> </span>
+                <a href="#!" class="secondary-content" onclick="Materialize.toast('Congradulation you have booked a hut!', 4000)"><i class="material-icons amber-text">shopping_cart</i></a>
               </div>
             </li>
           <% end %>
@@ -70,9 +70,7 @@
 
 
     </div>
-    <div class="col s12 m12 center-align">
-      <a class="btn margin-btn" onclick="Materialize.toast('Congradulation you have booked a hut!', 4000)">Book a hut</a>
-    </div>
+
     <div class="col s12 m12">
       <div id="map"></div>
     </div>
@@ -92,7 +90,7 @@
         if (markers.length == 0) {
           handler.getMap().setZoom(2);
         } else if (markers.length == 1) {
-          handler.getMap().setZoom(11);
+          handler.getMap().setZoom(15);
         }
       });
     });
