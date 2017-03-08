@@ -5,7 +5,7 @@
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
     <li class = "cyan-text">
-      <%= link_to "#" do %>
+      <%= link_to user_profile_path(current_user) do %>
         <i class="fa fa-user"> </i> <%= t(".profile", default: "Profile") %>
       <% end %>
     </li>
