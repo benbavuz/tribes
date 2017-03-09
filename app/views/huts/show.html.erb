@@ -51,18 +51,22 @@
     </div>
     <div class="col s12 m6">
     <!-- place for calender -->
-        <ul class="collection with-header">
-          <li class="collection-header grey darken-4 amber-text">Availability</li>
-          <% @hut.availabilities.each do |availability| %>
-            <li class="collection-item">
-              <div>
-                <span class="cyan-text"><%= availability.start_date.strftime("%B %d, %Y") %></span>
-                </br><span class="">From <%= availability.start_date.strftime("%H:%M") %> To <%= availability.end_date.strftime("%H:%M") %> </span>
-                <a href="#!" class="secondary-content" onclick="Materialize.toast('Congradulation you have booked a hut!', 4000)"><i class="material-icons amber-text">shopping_cart</i></a>
-              </div>
-            </li>
-          <% end %>
-        </ul>
+    <ul class="collection with-header">
+      <li class="collection-header grey darken-4 amber-text">Availability</li>
+      <%if @hut.availabilities.count == 0 %>
+        <p class = "search-bar center">Sorry, this hut doesn't have any availability</p>
+      <% else %>
+        <% @hut.availabilities.each do |availability| %>
+      <li class="collection-item">
+        <div>
+          <span class="cyan-text"><%= availability.start_date.strftime("%B %d, %Y") %></span>
+          </br><span class="">From <%= availability.start_date.strftime("%H:%M") %> To <%= availability.end_date.strftime("%H:%M") %> </span>
+          <a href="#!" class="secondary-content" onclick="Materialize.toast('Congradulation you have booked a hut!', 4000)"><i class="material-icons amber-text">shopping_cart</i></a>
+        </div>
+      </li>
+      <% end %>
+      <% end %>
+    </ul>
 
 
 
