@@ -38,7 +38,6 @@
 </div>
 
 
-
   <div class="row center map-tribe">
     <a class="btn-large waves-effect waves-light amber" href="#modal2">Request to join</a>
   </div>
@@ -46,18 +45,17 @@
   <div id="modal2" class="modal">
     <div class="modal-content">
       <h4>Confirm your request</h4>
-      <p>Your request to join the tribe is sent to the admin, you will receive an answer soon</p>
+      <p>Please confirm that you want to join this Tribe.
+      By doing so, you agree on respecting the rules set by the administrator and complying to the minimum requirements</p>
     </div>
     <div class="modal-footer">
 
-
-<%= link_to "Agree", tribes_path, class: "modal-action waves-effect waves-green btn-flat" %>
-
+      <%= simple_form_for @tribe, url: assign_user_tribe_path(@tribe), method: :post do |f| %>
+        <%= f.button :submit, 'CONFIRM', :class => "modal-action waves-effect waves-green btn-flat" %>
+      <% end %>
 
     </div>
   </div>
-
-
 
   <% content_for(:after_js) do %>
   <%= javascript_tag do %>
@@ -67,7 +65,6 @@ $(document).ready(function(){
   });
   <% end %>
   <% end %>
-
 
 
 <!-- Map -->
