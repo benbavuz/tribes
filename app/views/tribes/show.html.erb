@@ -10,7 +10,7 @@
         <%= cl_image_tag('https://s2.qwant.com/thumbr/0x0/5/1/327f1a9730f8f9a3db456dc43e0588/b_1_q_0_p_0.jpg?u=http%3A%2F%2Fst.depositphotos.com%2F1029662%2F1324%2Fv%2F950%2Fdepositphotos_13242438-Africa-Red-Indian-Eskimo-Man-Woman-National-Traditional-Costume-Dress-Clothing-Icon-Symbol-Sign-Pictogram.jpg&q=0&b=1&p=0&a=1', height: 50, width: 50, :class => "circle") %>
       <% end %>
     </div>
-      <div class="tribe-name "><h4 class = "center"><%= @tribe.name %></h4></div>
+      <div class="tribe-name"><h4 class = "center"><%= @tribe.name %></h4></div>
       <div class="tribe-cabout center"><%= @tribe.short_desk %></div>
   </div>
 </div>
@@ -20,7 +20,7 @@
   <ul class="collapsible" data-collapsible="accordion">
       <li>
         <div class="collapsible-header active"><i class="material-icons">done</i>Minimum requirements</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        <div class="collapsible-body"><span><%= @tribe.requirement %></span></div>
       </li>
       <li>
         <div class="collapsible-header"><i class="material-icons">info_outline</i>About</div>
@@ -71,8 +71,11 @@ $(document).ready(function(){
 
 
 <!-- Map -->
+<div class="container" style = "padding-bottom: 50px">
+<h5 class = "center">Huts of the Tribe</h5>
 <div class = "map-tribe">
   <div id="map" style="width: 100%; height: 400px;"></div>
+</div>
 </div>
 
 <!-- Map rendering -->
