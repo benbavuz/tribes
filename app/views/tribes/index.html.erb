@@ -1,51 +1,32 @@
-    <div class ="container search-bar">
-    <h5 class="">Search a tribe</h5>
-       <form action = "<%= tribes_path %>" method = "get" >
-                <select name = "search" id="search" type="search">
-                <option value="" disabled selected>Choose your city</option>
-                <option value="marseille" data-icon="https://mediap.flypgs.com/awh/400/400//files/sehirlergorsel/marsilya.jpg" class="left circle">Marseille</option>
-                <option value="lyon" data-icon="http://www.opera-bien-etre.fr/media/thumbnails/centre_ville_de_lyon_espace_coworking_salon_de_bienetre_cooperatif_opera__066161700_1536_23032015.jpg" class="left circle">Lyon</option>
-                <option value="paris" data-icon="https://mediap.flypgs.com/awh/400/400//files/sehirlergorsel/paris.jpg" class="left circle">Paris</option>
-                <option value="bordeaux" data-icon="http://appartdebordeaux.com/wp-content/uploads/2016/03/bordeaux-visite-400x400.jpg" class="left circle">Bordeaux</option>
-                <option value="nantes" data-icon="http://www.presseocean.fr/sites/presseocean.fr/files/imagecache/facebook/2015/09/10/miroir_eau_nantes_cb_po_34a2020-379486.jpg" class="left circle">Nantes</option>
-               </select>
-        <input type="checkbox" id="skill1"/>
-        <label for="skill1" style="margin:10px">Web development</label>
-        <input type="checkbox" id="skill2" />
-        <label for="skill2" style="margin:10px">Marketing</label>
-        <input type="checkbox" id="skill3" />
-        <label for="skill3" style="margin:10px">Communication</label>
-        <input type="checkbox" id="skill3" />
-        <label for="skill4" style="margin:10px">Design</label>
-        <input type="checkbox" id="skill4" />
-        <label for="skill5" style="margin:10px">Project Management</label>
-        <input type="checkbox" id="skill6" />
-        <label for="skill6" style="margin:10px">Law</label>
+<div class ="container search-bar">
+  <h5 class="">Search a tribe</h5>
+  <%= form_tag(tribes_path, remote: true, method: "get") do %>
+    <select name = "search[city]" id="search" type="search">
+      <option value="" disabled selected>Choose your city</option>
+      <option value="marseille" data-icon="https://mediap.flypgs.com/awh/400/400//files/sehirlergorsel/marsilya.jpg" class="left circle">Marseille</option>
+      <option value="lyon" data-icon="http://www.opera-bien-etre.fr/media/thumbnails/centre_ville_de_lyon_espace_coworking_salon_de_bienetre_cooperatif_opera__066161700_1536_23032015.jpg" class="left circle">Lyon</option>
+      <option value="paris" data-icon="https://mediap.flypgs.com/awh/400/400//files/sehirlergorsel/paris.jpg" class="left circle">Paris</option>
+      <option value="bordeaux" data-icon="http://appartdebordeaux.com/wp-content/uploads/2016/03/bordeaux-visite-400x400.jpg" class="left circle">Bordeaux</option>
+      <option value="nantes" data-icon="http://www.presseocean.fr/sites/presseocean.fr/files/imagecache/facebook/2015/09/10/miroir_eau_nantes_cb_po_34a2020-379486.jpg" class="left circle">Nantes</option>
+    </select>
+    <% users_ids = TribeMember.where(tribe_id: @tribes.ids).pluck(:user_id) %>
+    <% Skill.all.where(id:(UserSkill.where(user_id: users_ids).pluck(:skill_id))).each do |skill| %>
+      <input type="checkbox" name="search[skills][]" id="skill-<%= skill.id %>" value="<%= skill.id %>" type="search"/>
+      <label for="skill-<%= skill.id %>" style="margin:10px" ><%= skill.name %></label>
+    <% end %>
+    <input type = "submit" class = "btn-large waves-effect waves-light amber center">
+  <% end %>
+</div>
 
-        <input type = "submit" class = "btn-large waves-effect waves-light amber center">
-            </form>
-    </div>
-
-
-
-
-
-    <div class="container" style="padding-top: 30px">
-     <div class = "search-headers">
-     <% if params[:search].present? %>
-         <h5 class="">Tribes in <%= params[:search] %></h5>
-       <% else %>
-         <h5 class="">All tribes</h5>
-       <% end %>
-      </div>
-    <div class="row">
-      <% @tribes.each do |tribe| %>
-
-        <%= render partial: "card", object: tribe, as: :tribe %>
-
-      <% end %>
-    </div>
-    </div>
-
-
-
+<div class="container" style="padding-top: 30px">
+  <div class = "search-headers">
+    <% if params[:search].present? %>
+     <h5 class="">Tribes in <%= params[:search][:city]  %> et <%= params[:search][:skills] %></h5>
+    <% else %>
+      <h5 class="">All tribes</h5>
+    <% end %>
+  </div>
+  <div class="row" id="search-results">
+    <%= render "search_results", tribes: @tribes %>
+  </div>
+</div>
