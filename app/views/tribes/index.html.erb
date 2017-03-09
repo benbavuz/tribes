@@ -23,13 +23,7 @@
 
 <div class="container" style="padding-top: 30px">
   <div id = "search-headers">
-    <% if params[:search].present? %>
-     <h5 class="">Tribes in <%= params[:search][:city]  %> et <%= params[:search][:skills] %></h5>
-    <% elsif params[:search].present? %>
-     <h5 class="">Tribes in <%= params[:search] %></h5>
-    <% else %>
       <h5 class="">All tribes</h5>
-    <% end %>
   </div>
   <div class="row" id="search-results">
     <%= render "search_results", tribes: @tribes %>
