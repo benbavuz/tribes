@@ -43,6 +43,15 @@ equipments.each { |x| Equipment.create(name: x) }
 skills.each { |x| Skill.create(name: x) }
 
 
+
+#  a.start_date = DateTime.new(2017,3,10,8)
+# => Fri, 10 Mar 2017 08:00:00 +0000
+# irb(main):018:0> a.end_date = DateTime.new(2017,3,10,10)
+# => Fri, 10 Mar 2017 10:00:00 +0000
+# irb(main):019:0> a.hut_id=1
+# => 1
+# irb(main):020:0> a.save
+
 us1 = UserSkill.create(user_id: 1, skill_id: 0)
 us2 = UserSkill.create(user_id: 1, skill_id: 2)
 us3 = UserSkill.create(user_id: 1, skill_id: 3)
@@ -52,7 +61,7 @@ us6 = UserSkill.create(user_id: 2, skill_id: 6)
 us7 = UserSkill.create(user_id: 2, skill_id: 7)
 us8 = UserSkill.create(user_id: 2, skill_id: 8)
 
-us9 = UserSkill.create(user_id: 3, skill_id: 0)
+us9 = UserSkill.create(user_id: 5, skill_id: 0)
 us10 = UserSkill.create(user_id: 3, skill_id: 3)
 us11 = UserSkill.create(user_id: 3, skill_id: 5)
 us12 = UserSkill.create(user_id: 3, skill_id: 7)
