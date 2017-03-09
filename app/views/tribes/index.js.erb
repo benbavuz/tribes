@@ -1,3 +1,5 @@
+$("#search_skills").html("<%= j render 'search_skills', tribes: @tribes %>");
+
 $("#search-headers").html("<h5><%= !params[:search][:city].blank? ? "Tribes in " + params[:search][:city].capitalize : "All tribes" %></h5>");
 
 $("#search-results").html("<%= j render 'search_results', tribes: @tribes %>");
