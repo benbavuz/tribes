@@ -2,10 +2,16 @@ Rails.application.routes.draw do
 
   resources :huts
 
-  resources :tribes
+  resources :tribes do
+    member do
+      post :assign_user
+    end
+  end
+
   resources :huts
   devise_for :users
   root to: 'pages#home'
+
 
 
   resources :users, only: [] do
