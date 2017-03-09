@@ -1,8 +1,19 @@
 <div class ="container">
   <div class="row">
-    <h1 class="center-align">List of huts</h1>
-    <% @huts.each do |hut| %>
-      <%= render partial: "card", object: hut, as: :hut %>
+
+    <% if @huts.count == 0 %>
+    <h5 class = "center search-bar">Looks like you don't have created your hut yet !</h5>
+    <p class = "center">By creating yout hut, you will be able to join tribes that require you to offer time available at your hut</p>
+    <% else %>
+    <h5 class="center-align">My huts</h1>
+      <% @huts.each do |hut| %>
+        <%= render partial: "card", object: hut, as: :hut %>
+      <% end %>
     <% end %>
   </div>
+
+  <div class="row center">
+        <a href="/huts/new" id="download-button" class="btn-large waves-effect waves-light amber"> Add a new hut  </a>
+      </div>
+
 </div>
