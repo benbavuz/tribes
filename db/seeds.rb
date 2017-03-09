@@ -1,9 +1,10 @@
 User.destroy_all
+Equipment.destroy_all
+Equipment.destroy_all
 Skill.destroy_all
 UserSkill.destroy_all
 Tribe.destroy_all
 TribeMember.destroy_all
-Equipment.destroy_all
 Hut.destroy_all
 
 User.create(
@@ -20,22 +21,45 @@ User.create(
   phone_number: "0644332211",
   average_rating: 5.00
 )
+User.create(
+  email: "benjamin.bavuz@gmail.com",
+  username: "bbavuz",
+  password: "123456",
+  phone_number: "0611223344",
+  average_rating: 4.50
+)
+User.create(
+  email: "fm191@hotmail.fr",
+  username: "mfabien",
+  password: "123456",
+  phone_number: "0699887766",
+  average_rating: 3.50
+)
 
-specialities = ["Front-end", "Back-end", "Full-stack", "Web", "UI","Marketing", "Communication", "Freelance", "Web Development", "Creation of Web Sites", "Website Design", "Design Sense", "Customer Service Skills", "Web Server Administration", "Project Management"]
-skills = ["Ruby", "Php", "Javascript", "Html", "Css", "Pack Adobe", "Microsoft Office", "Wordpress", "Python", "Mobile", "CEO","JavaScript and Ajax", "PHP", "ASP", "Java", "Perl", "C++", "Mobile Support"]
+equipments = ["Wifi", "Printer", "Scanner", "Kitchen", "Coffe machine", "Sofa", "garden"]
+skills = ["Ruby", "Php", "Javascript", "Html", "Css", "Pack Adobe", "Microsoft Office", "Wordpress", "Python", "Mobile", "CEO","JavaScript and Ajax", "PHP", "ASP", "Java", "Perl", "C++", "Mobile Support", "Front-end", "Back-end", "Full-stack", "Web", "UI", "Marketing", "Communication", "Freelance", "Web Development", "Creation of Web Sites", "Website Design", "Design Sense", "Customer Service Skills", "Web Server Administration", "Project Management"]
 
-specialities.each { |x| Skill.create(name: x) }
+equipments.each { |x| Equipment.create(name: x) }
 skills.each { |x| Skill.create(name: x) }
 
 
-us1 = UserSkill.create(user_id: 1, skill_id: 1)
+us1 = UserSkill.create(user_id: 1, skill_id: 0)
 us2 = UserSkill.create(user_id: 1, skill_id: 2)
 us3 = UserSkill.create(user_id: 1, skill_id: 3)
 us4 = UserSkill.create(user_id: 1, skill_id: 4)
-us5 = UserSkill.create(user_id: 2, skill_id: 5)
+us5 = UserSkill.create(user_id: 2, skill_id: 0)
 us6 = UserSkill.create(user_id: 2, skill_id: 6)
 us7 = UserSkill.create(user_id: 2, skill_id: 7)
 us8 = UserSkill.create(user_id: 2, skill_id: 8)
+
+us9 = UserSkill.create(user_id: 3, skill_id: 0)
+us10 = UserSkill.create(user_id: 3, skill_id: 3)
+us11 = UserSkill.create(user_id: 3, skill_id: 5)
+us12 = UserSkill.create(user_id: 3, skill_id: 7)
+us13 = UserSkill.create(user_id: 4, skill_id: 2)
+us14 = UserSkill.create(user_id: 4, skill_id: 0)
+us15 = UserSkill.create(user_id: 4, skill_id: 6)
+us16 = UserSkill.create(user_id: 4, skill_id: 8)
 
 
 tribe1 = Tribe.create(
@@ -97,39 +121,92 @@ tribe8 = Tribe.create(
   requirement: '3 hours by week + Coffe machine')
 
 
-tm1 = TribeMember.create(tribe_id: 8, user_id: 2)
-tm2 = TribeMember.create(tribe_id: 7, user_id: 2)
-tm3 = TribeMember.create(tribe_id: 6, user_id: 2)
-tm4 = TribeMember.create(tribe_id: 5, user_id: 2)
-tm5 = TribeMember.create(tribe_id: 4, user_id: 1)
-tm6 = TribeMember.create(tribe_id: 3, user_id: 1)
-tm7 = TribeMember.create(tribe_id: 2, user_id: 1)
-tm8 = TribeMember.create(tribe_id: 1, user_id: 1)
+# tm1 = TribeMember.create(tribe_id: 8, user_id: 2)
+# tm2 = TribeMember.create(tribe_id: 7, user_id: 2)
+# tm3 = TribeMember.create(tribe_id: 6, user_id: 2)
+# tm4 = TribeMember.create(tribe_id: 5, user_id: 2)
+# tm5 = TribeMember.create(tribe_id: 4, user_id: 1)
+# tm6 = TribeMember.create(tribe_id: 3, user_id: 1)
+# tm7 = TribeMember.create(tribe_id: 2, user_id: 1)
+# tm8 = TribeMember.create(tribe_id: 1, user_id: 1)
 
-Hut.create(
-  name: "La hutte de Paris",
-  address: "9 avenue Montaigne",
-  address2: "",
-  zip_code: "75008",
-  city: "Paris",
-  country: "France",
-  about: "Hut specialized in NFC technology",
-  capacity: 7,
-  user_id: 2,
-  latitude: 48.865513,
-  longitude: 2.30256
-)
-Hut.create(
-  name: "La hutte de Marseille",
-  address: "16 boulevard Bernabo",
-  address2: "",
-  zip_code: "13015",
-  city: "Marseille",
-  country: "France",
-  about: "Hut specialized in Web technology",
-  capacity: 4,
-  user_id: 1,
-  latitude: 43.337276,
-  longitude: 5.355767
-)
+# h1 = Hut.create(
+#   name: "La hutte de Paris",
+#   address: "9 avenue Montaigne",
+#   address2: "",
+#   zip_code: "75008",
+#   city: "Paris",
+#   country: "France",
+#   about: "Hut specialized in NFC technology",
+#   capacity: 7,
+#   user_id: 2,
+#   latitude: 48.865513,
+#   longitude: 2.30256
+# )
+# h2 = Hut.create(
+#   name: "La hutte de Marseille",
+#   address: "16 boulevard Bernabo",
+#   address2: "",
+#   zip_code: "13015",
+#   city: "Marseille",
+#   country: "France",
+#   about: "Hut specialized in Web technology",
+#   capacity: 4,
+#   user_id: 1,
+#   latitude: 43.337276,
+#   longitude: 5.355767
+# )
+# h3 = Hut.create(
+#   name: "La hutte de ",
+#   address: "9 avenue Montaigne",
+#   address2: "",
+#   zip_code: "75008",
+#   city: "Paris",
+#   country: "France",
+#   about: "Hut specialized in NFC technology",
+#   capacity: 7,
+#   user_id: 2,
+#   latitude: 48.865513,
+#   longitude: 2.30256
+# )
+# h4 = Hut.create(
+#   name: "La hutte de Marseille",
+#   address: "16 boulevard Bernabo",
+#   address2: "",
+#   zip_code: "13015",
+#   city: "Marseille",
+#   country: "France",
+#   about: "Hut specialized in Web technology",
+#   capacity: 4,
+#   user_id: 1,
+#   latitude: 43.337276,
+#   longitude: 5.355767
+# )
+# h5 = Hut.create(
+#   name: "La hutte de Paris",
+#   address: "9 avenue Montaigne",
+#   address2: "",
+#   zip_code: "75008",
+#   city: "Paris",
+#   country: "France",
+#   about: "Hut specialized in NFC technology",
+#   capacity: 7,
+#   user_id: 2,
+#   latitude: 48.865513,
+#   longitude: 2.30256
+# )
+# h6 = Hut.create(
+#   name: "La hutte de Marseille",
+#   address: "16 boulevard Bernabo",
+#   address2: "",
+#   zip_code: "13015",
+#   city: "Marseille",
+#   country: "France",
+#   about: "Hut specialized in Web technology",
+#   capacity: 4,
+#   user_id: 1,
+#   latitude: 43.337276,
+#   longitude: 5.355767
+# )
+
 
