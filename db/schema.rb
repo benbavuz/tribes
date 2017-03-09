@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 20170308104929) do
     t.index ["hut_id"], name: "index_availabilities_on_hut_id", using: :btree
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "hut_id"
+    t.integer  "availability_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["availability_id"], name: "index_bookings_on_availability_id", using: :btree
+    t.index ["hut_id"], name: "index_bookings_on_hut_id", using: :btree
+    t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
+  end
+
   create_table "equipment", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -92,10 +103,8 @@ ActiveRecord::Schema.define(version: 20170308104929) do
     t.text     "about"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
     t.string   "short_desk"
     t.text     "requirement"
-    t.index ["user_id"], name: "index_tribes_on_user_id", using: :btree
   end
 
   create_table "user_skills", force: :cascade do |t|
@@ -128,12 +137,14 @@ ActiveRecord::Schema.define(version: 20170308104929) do
   end
 
   add_foreign_key "availabilities", "huts"
+  add_foreign_key "bookings", "availabilities"
+  add_foreign_key "bookings", "huts"
+  add_foreign_key "bookings", "users"
   add_foreign_key "hut_equipments", "equipment"
   add_foreign_key "hut_equipments", "huts"
   add_foreign_key "huts", "users"
   add_foreign_key "tribe_members", "tribes"
   add_foreign_key "tribe_members", "users"
-  add_foreign_key "tribes", "users"
   add_foreign_key "user_skills", "skills"
   add_foreign_key "user_skills", "users"
 end
