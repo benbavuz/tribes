@@ -1,3 +1,4 @@
+
 <div class ="container search-bar">
   <h5 class="">Search a tribe</h5>
   <%= form_tag(tribes_path, remote: true, method: "get") do %>
@@ -8,6 +9,8 @@
       <option value="paris" data-icon="https://mediap.flypgs.com/awh/400/400//files/sehirlergorsel/paris.jpg" class="left circle">Paris</option>
       <option value="bordeaux" data-icon="http://appartdebordeaux.com/wp-content/uploads/2016/03/bordeaux-visite-400x400.jpg" class="left circle">Bordeaux</option>
       <option value="nantes" data-icon="http://www.presseocean.fr/sites/presseocean.fr/files/imagecache/facebook/2015/09/10/miroir_eau_nantes_cb_po_34a2020-379486.jpg" class="left circle">Nantes</option>
+      <option value="london" data-icon="http://viajealondres.es/wp-content/uploads/2014/02/londres.jpg" class="left circle">London</option>
+      <option value="rio de janeiro" data-icon="http://comex-scacpau.org/doc/C-102846.jpg" class="left circle">Rio de Janeiro</option>
     </select>
     <% users_ids = TribeMember.where(tribe_id: @tribes.ids).pluck(:user_id) %>
     <% Skill.all.where(id:(UserSkill.where(user_id: users_ids).pluck(:skill_id))).each do |skill| %>
