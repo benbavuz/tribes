@@ -1,6 +1,6 @@
 class TribesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_tribe, only: [:show, :edit, :update, :destroy]
+  before_action :set_tribe, only: [:show, :edit, :update, :destroy, :assign_user]
 
   def index
     if params[:search].present?
@@ -83,6 +83,12 @@ class TribesController < ApplicationController
   def destroy
     @tribe.destroy
     redirect_to tribes_path
+  end
+
+  def assign_user
+    authorize @tribe
+    current_user.tribes << @tribe
+    redirect_to user_tribes_path(current_user)
   end
 
   private

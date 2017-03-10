@@ -17,5 +17,8 @@ class TribePolicy < ApplicationPolicy
   true
   end
 
+  def assign_user?
+   !record.users.include?(user)
+  end
 
 end
