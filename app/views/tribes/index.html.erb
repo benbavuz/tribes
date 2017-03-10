@@ -1,6 +1,5 @@
-
 <div class ="container search-bar">
-  <h5 class="">Search a tribe</h5>
+  <h5>Search a tribe</h5>
   <%= form_tag(tribes_path, remote: true, method: "get") do %>
     <select name = "search[city]" id="search" type="search">
       <option value="" disabled selected>Choose your city</option>
@@ -12,24 +11,15 @@
       <option value="london" data-icon="http://viajealondres.es/wp-content/uploads/2014/02/londres.jpg" class="left circle">London</option>
       <option value="rio de janeiro" data-icon="http://comex-scacpau.org/doc/C-102846.jpg" class="left circle">Rio de Janeiro</option>
     </select>
-    <% users_ids = TribeMember.where(tribe_id: @tribes.ids).pluck(:user_id) %>
-    <% Skill.all.where(id:(UserSkill.where(user_id: users_ids).pluck(:skill_id))).each do |skill| %>
-      <input type="checkbox" name="search[skills][]" id="skill-<%= skill.id %>" value="<%= skill.id %>" type="search"/>
-      <label for="skill-<%= skill.id %>" style="margin:10px" ><%= skill.name %></label>
-    <% end %>
+    <div id="search_skills">
+      <%= render "search_skills", tribes: @tribes %>
+    </div>
     <input type = "submit" value="GO !" class = "btn-large waves-effect waves-light amber center">
   <% end %>
 </div>
-
 <div class="container" style="padding-top: 30px">
   <div id = "search-headers">
-    <% if params[:search].present? %>
-     <h5 class="">Tribes in <%= params[:search][:city]  %> et <%= params[:search][:skills] %></h5>
-    <% elsif params[:search].present? %>
-     <h5 class="">Tribes in <%= params[:search] %></h5>
-    <% else %>
-      <h5 class="">All tribes</h5>
-    <% end %>
+    <h5>All tribes</h5>
   </div>
   <div class="row" id="search-results">
     <%= render "search_results", tribes: @tribes %>

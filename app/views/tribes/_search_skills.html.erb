@@ -1,0 +1,5 @@
+<% users_ids = TribeMember.where(tribe_id: tribes.ids).pluck(:user_id) %>
+<% Skill.all.where(id:(UserSkill.where(user_id: users_ids).pluck(:skill_id))).each do |skill| %>
+<input type="checkbox" name="search[skills][]" id="skill-<%= skill.id %>" value="<%= skill.id %>" type="search"/>
+<label for="skill-<%= skill.id %>" style="margin:10px" ><%= skill.name %></label>
+<% end %>

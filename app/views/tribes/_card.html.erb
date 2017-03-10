@@ -12,8 +12,17 @@
       <p class="card-short"><%= tribe.short_desk %></p>
     </div>
     <div class="card-action">
-      <a href="#modalskills-<%= tribe.id %>" class="cyan-text text-darken-2">SKILLS</a>
-      <a href="#modalmap-<%= tribe.id %>" class="cyan-text text-darken-2">MAP</a>
+      <a
+        href="javascript:;"
+        data-modal-target="<%= "#modalskills-#{tribe.id}" %>"
+        class="cyan-text text-darken-2 modal-skills-opener">SKILLS</a>
+
+      <a
+        href="javascript:;"
+        data-modal-target="<%= "#modalmap-#{tribe.id}" %>"
+        data-map-id="<%= "map-#{tribe.id}" %>"
+        data-map-markers="<%= tribe.coordinates.to_json %>"
+        class="cyan-text text-darken-2 modal-map-opener">MAP</a>
       <%= link_to "SHOW", tribe_path(tribe), class: "cyan-text text-darken-2" %>
       <!-- <a href="#" class="cyan-text text-darken-2">SHOW</a> -->
     </div>
@@ -24,7 +33,7 @@
 <!-- Modal Trigger -->
 
   <!--Modal Structure skills -->
-  <div id="modalskills-<%= tribe.id %>" class="modal">
+  <div id="modalskills-<%= tribe.id %>" class="modal modal-skills">
     <div class="modal-content">
       <h4>Tribe skills</h4>
       <% tribe.skills_tribe.uniq.each do |skill| %>
@@ -32,46 +41,17 @@
       <% end %>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      <a href="javascript:;" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
   </div>
   <!-- Modal Structure map-->
-  <div id="modalmap-<%= tribe.id %>" class="modal">
+  <div id="modalmap-<%= tribe.id %>" class="modal modal-map" data-tribe-id="<%= tribe.id %>">
     <div class="modal-content">
       <h4>Tribe map</h4>
-      <div id="map-<%= tribe.id %>" style="width: 100%; height: 300px;"></div>
+      <div id="<%= "map-#{tribe.id}" %>" style="width: 100%; height: 300px;"></div>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      <a href="javascript:;" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
   </div>
 </div>
-
-
-<!-- Map -->
-
-<!-- Map rendering -->
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-  $(document).ready(function(){
-    <!-- // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered -->
-    $('#modalskills-<%= tribe.id %>').modal();
-    <!-- Code JSscript for huts  -->
-    $('#modalmap-<%= tribe.id %>').modal({
-      ready: function(modal, trigger) {
-        var handler = Gmaps.build('Google');
-        handler.buildMap({ internal: { id: 'map-<%= tribe.id %>' } }, function() {
-          markers = handler.addMarkers(<%= raw tribe.coordinates.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          if (markers.length == 0) {
-            handler.getMap().setZoom(2);
-          } else if (markers.length == 1) {
-            handler.getMap().setZoom(14);
-          }
-        });
-      },
-    });
-  });
-  <% end %>
-<% end %>
